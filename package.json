@@ -1,0 +1,33 @@
+{
+  "name": "graphictools",
+  "version": "1.2.4",
+  "description": "空间图形工具",
+  "main": "lib/graphictools.cjs.js",
+  "jsnext:main": "lib/graphictools.esm.js",
+  "module": "lib/graphictools.esm.js",
+  "browser": "lib/graphictools.browser.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "dev": "npx rollup -wc rollup.config.js",
+    "build": "npx rollup -c rollup.config.base.js && npm run build:types",
+    "build:types": "npx tsc"
+  },
+  "author": "wdxing",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^19.0.2",
+    "@rollup/plugin-eslint": "^8.0.2",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.4.0",
+    "eslint": "^8.23.0",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-filesize": "^9.1.2",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^2.0.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.4.0"
+  }
+}
