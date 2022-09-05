@@ -1,10 +1,10 @@
 {
   "name": "graphictools",
-  "version": "1.2.4",
+  "version": "1.2.7",
   "description": "空间图形工具",
   "main": "lib/graphictools.cjs.js",
   "jsnext:main": "lib/graphictools.esm.js",
-  "module": "lib/graphictools.esm.js",
+  "module": "index.js",
   "browser": "lib/graphictools.browser.js",
   "types": "types/index.d.ts",
   "scripts": {

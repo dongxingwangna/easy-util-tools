@@ -1,7 +1,6 @@
 import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
 import json from "rollup-plugin-json";
-import dts from "rollup-plugin-dts"
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import eslint from "@rollup/plugin-eslint";
@@ -10,23 +9,23 @@ const formatName = "hello";
 export default {
     input: "./src/index.ts",
     output: [
-        {
-            file: pkg.main,
-            format: "cjs",
-        },
+        // {
+        //     file: pkg.main,
+        //     format: "cjs",
+        // },
         {
             file: pkg.module,
             format: "esm",
         },
-        {
-            file: pkg.browser,
-            format: "umd",
-            name: formatName,
-        },
-        {
-            file: pkg.types,
-            format: "es"
-        }
+        // {
+        //     file: pkg.browser,
+        //     format: "umd",
+        //     name: formatName,
+        // },
+        // {
+        //     file: pkg.types,
+        //     format: "es"
+        // }
     ],
     plugins: [
         json(),
@@ -39,10 +38,8 @@ export default {
             main: true,
             brower: true,
         }),
-        // dts(),
         typescript(),
         eslint(),
-        babel({ exclude: "node_modules/**" }),
-        dts()
+        babel({ exclude: "node_modules/**" })
     ],
 };

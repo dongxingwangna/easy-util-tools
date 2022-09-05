@@ -1,11 +1,19 @@
-import { Point } from "./type"
-
+interface Point {
+    x: number,
+    y: number
+}
 /**
- * 判断点是否在线上
+ * 获取点到线的距离
  * @param point
  * @param lineStart
- * @param lineEnd
+ * @param lienEnd
  */
-export function pointInLine(point: Point, lineStart: Point, lineEnd: Point): Boolean {
-    return false
+export function getTheDistanceOfAPointLineSegment(point: Point, lineStart: Point, lienEnd: Point): number{
+    let r = ((point.x - lineStart.x) * (lienEnd.x - lineStart.x) + (point.y - lineStart.y) * (lienEnd.y - lineStart.y))
+        / ((lienEnd.x - lineStart.x) * (lienEnd.x - lineStart.x) + (lienEnd.y - lineStart.y) * (lienEnd.y - lineStart.y));
+    if (r <= 0)return Math.sqrt((point.x - lineStart.x) * (point.x - lineStart.x) + (point.y - lineStart.y) * (point.y - lineStart.y));
+    if (r >= 1)return Math.sqrt((point.x - lienEnd.x) * (point.x - lienEnd.x) + (point.y - lienEnd.y) * (point.y - lienEnd.y));
+    let px = lineStart.x + (lienEnd.x - lineStart.x) * r;
+    let py = lineStart.y + (lienEnd.y - lineStart.y) * r;
+    return Math.sqrt((point.x-px)*(point.x-px)+(point.y-py)*(point.y-py));
 }
