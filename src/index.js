@@ -1,14 +1,10 @@
-interface Point {
-    x: number,
-    y: number
-}
 /**
  * 获取点到线的距离
  * @param point
  * @param lineStart
  * @param lienEnd
  */
-export function getTheDistanceOfAPointLineSegment(point: Point, lineStart: Point, lienEnd: Point): number{
+export function getTheDistanceOfAPointLineSegment(point, lineStart, lienEnd) {
     let r = ((point.x - lineStart.x) * (lienEnd.x - lineStart.x) + (point.y - lineStart.y) * (lienEnd.y - lineStart.y))
         / ((lienEnd.x - lineStart.x) * (lienEnd.x - lineStart.x) + (lienEnd.y - lineStart.y) * (lienEnd.y - lineStart.y));
     if (r <= 0)return Math.sqrt((point.x - lineStart.x) * (point.x - lineStart.x) + (point.y - lineStart.y) * (point.y - lineStart.y));
