@@ -1,5 +1,5 @@
 /**
- * 获取点到线的距离
+ * 获取点到线段的距离
  * @param point
  * @param lineStart
  * @param lienEnd
