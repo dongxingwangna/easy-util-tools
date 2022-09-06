@@ -1,4 +1,11 @@
-import {getTheDistanceOfAPointLineSegment} from "./src";
+import {
+    getTheDistanceOfAPointLineSegment,
+    determineIfAPointIsWithinAnotherPointArea ,
+    getTheDistanceFromPointToLine
+} from "./src";
+
 export {
-    getTheDistanceOfAPointLineSegment
+    getTheDistanceOfAPointLineSegment,
+    determineIfAPointIsWithinAnotherPointArea,
+    getTheDistanceFromPointToLine
 }
