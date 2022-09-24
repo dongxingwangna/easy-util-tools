@@ -11,11 +11,13 @@ import {
   determineIfAPointIsWithinAnotherPointArea,
   getTheDistanceFromPointToLine,
 } from './core/graphic';
+import { Point } from './core/graphic/Point';
 
 export {
   Color,
   Gradient,
+  Point,
   getTheDistanceOfAPointLineSegment,
-  determineIfAPointIsWithinAnotherPointArea,
   getTheDistanceFromPointToLine,
+  determineIfAPointIsWithinAnotherPointArea,
 };
