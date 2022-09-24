@@ -1,4 +1,9 @@
-import { Color } from './color';
+/**
+ * @docName: Gradient.ts
+ * @Author: wdx
+ * @Date: 2022/9/24  14:43
+ */
+ import { Color } from './color';
 
 /**
  * 渐变色

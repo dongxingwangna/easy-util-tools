@@ -1,7 +1,7 @@
-# graphicTools
+# graphictools
 
 #### 介绍
-空间图形工具
+图形工具
 
 #### 软件架构
 软件架构说明

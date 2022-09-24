@@ -1,4 +1,10 @@
 /**
+ * @docName: color.ts
+ * @Author: wdx
+ * @Date: 2022/9/24  14:42
+ */
+
+/**
  * 颜色
  * @param r {number} 0-255
  * @param g {number} 0-255
