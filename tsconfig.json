@@ -6,7 +6,7 @@
     "lib": ["es6"],
     "strict": true,
     "outDir": "./lib",
-    "sourceMap": true
+    "sourceMap": true,
   },
   "include": ["src"],
   "exclude": [
