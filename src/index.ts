@@ -1,3 +1,6 @@
-export const Greeter = (config: string) => {
-  return `${config}..`;
-};
+import { Color, Gradient } from "./core/color";
+
+export {
+  Color,
+  Gradient
+}
