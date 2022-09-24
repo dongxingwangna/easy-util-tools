@@ -71,8 +71,8 @@ export class Color {
    * 十六进制转十进制
    * @param hex
    */
-  hex2num(hex:string): number {
-    return parseInt(`0x${hex}`)
+  hex2num(hex: string): number {
+    return parseInt(`0x${hex}`);
   }
 
   /**
@@ -96,22 +96,22 @@ export class Color {
    * 读取十六进制颜色
    * @param hexColor {string} #000000-#ffffff 0x000000-0xffffff
    */
-  readHexColor(hexColor: string):Color{
-    let reg = new RegExp('^(#|0x)([A-z|0-9]{6})$')
-    if(reg.test(hexColor)){
+  readHexColor(hexColor: string): Color {
+    let reg = new RegExp('^(#|0x)([A-z|0-9]{6})$');
+    if (reg.test(hexColor)) {
       try {
-        let color = hexColor.replace(reg, `$2`)
-        this.r = this.hex2num(`${color[0] + color[1]}`)
-        this.g = this.hex2num(`${color[2] + color[3]}`)
-        this.b = this.hex2num(`${color[4]+ color[5]}`)
-        return this
+        let color = hexColor.replace(reg, `$2`);
+        this.r = this.hex2num(`${color[0] + color[1]}`);
+        this.g = this.hex2num(`${color[2] + color[3]}`);
+        this.b = this.hex2num(`${color[4] + color[5]}`);
+        return this;
       } catch (e) {
         console.error('failedToParseValue', e);
       }
     } else {
       console.error('Failed to read color, please set correct hex color value');
     }
-    return this
+    return this;
   }
 
   /**
@@ -120,11 +120,11 @@ export class Color {
    * @param g {number} 0-1
    * @param b {number} 0-1
    */
-  readChannelColor(r: number, g: number, b: number): Color{
-    this.r = r ? r * 255 : 0
-    this.g = g ? g * 255 : 0
-    this.b = b ? b * 255: 0
-    return this
+  readChannelColor(r: number, g: number, b: number): Color {
+    this.r = r ? r * 255 : 0;
+    this.g = g ? g * 255 : 0;
+    this.b = b ? b * 255 : 0;
+    return this;
   }
 
   /**
@@ -133,10 +133,10 @@ export class Color {
    * @param g {number} 0-255
    * @param b {number} 0-255
    */
-  readRgbColor(r: number, g: number, b: number): Color{
-    this.r = r ? r : 0
-    this.g = g ? g : 0
-    this.b = b ? b : 0
-    return this
+  readRgbColor(r: number, g: number, b: number): Color {
+    this.r = r ? r : 0;
+    this.g = g ? g : 0;
+    this.b = b ? b : 0;
+    return this;
   }
 }
