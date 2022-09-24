@@ -26,7 +26,7 @@ export class Gradient {
 
   /**
    * 获取颜色
-   * @param v
+   * @param v {number} 0-1
    */
   getColor(v: number): Color {
     let areaNum = this._chromatogram.length - 1;
@@ -40,8 +40,8 @@ export class Gradient {
 
   /**
    * 计算颜色
-   * @param cIndex
-   * @param regionalProportion
+   * @param cIndex {number}
+   * @param regionalProportion {number}
    */
   calcColor(cIndex: number, regionalProportion: number): Color {
     return new Color(
