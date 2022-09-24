@@ -5,6 +5,7 @@
  */
 
 import { Color, Gradient } from './core/color';
+
 import {
   getTheDistanceOfAPointLineSegment,
   determineIfAPointIsWithinAnotherPointArea,
