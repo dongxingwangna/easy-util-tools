@@ -1,6 +1,3 @@
-import { Color, Gradient } from "./core/color";
+import { Color, Gradient } from './core/color';
 
-export {
-  Color,
-  Gradient
-}
+export { Color, Gradient };

@@ -4,11 +4,10 @@
  * @param g {number} 0-255
  * @param b {number} 0-255
  */
-export class Color{
-  private _r: number
-  private _g: number
-  private _b: number
-
+export class Color {
+  private _r: number;
+  private _g: number;
+  private _b: number;
 
   get r(): number {
     return this._r;
@@ -43,40 +42,39 @@ export class Color{
   /**
    * 获取通道颜色
    */
-  getChannelColor(): { r: number, g: number, b: number } {
+  getChannelColor(): { r: number; g: number; b: number } {
     return {
-      r: this.r/255,
-      g: this.g/255,
-      b: this.b/255
-    }
+      r: this.r / 255,
+      g: this.g / 255,
+      b: this.b / 255,
+    };
   }
 
   /**
    * 数值转十六进制
    * @param v
    */
-  num2hex(v: number): string{
+  num2hex(v: number): string {
     let r;
-    r = v.toString(16)
-    r.length < 2 ? r = '0'+r : r
-    return r
+    r = v.toString(16);
+    r.length < 2 ? (r = '0' + r) : r;
+    return r;
   }
 
   /**
    * 获取十六进制颜色值
    */
-  getHexColor(): string{
-    let r = this.num2hex(this.r)
-    let g = this.num2hex(this.g)
-    let b = this.num2hex(this.b)
-    return `#${r}${g}${b}`
+  getHexColor(): string {
+    let r = this.num2hex(this.r);
+    let g = this.num2hex(this.g);
+    let b = this.num2hex(this.b);
+    return `#${r}${g}${b}`;
   }
 
   /**
    * 获取rgb颜色
    */
-  getRgbColor(): string{
-    return `rgb(${this.r} ${this.g} ${this.b})`
+  getRgbColor(): string {
+    return `rgb(${this.r} ${this.g} ${this.b})`;
   }
-
 }

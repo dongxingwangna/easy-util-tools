@@ -1,6 +1,6 @@
 {
   "name": "graphictools",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "空间图形工具",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
