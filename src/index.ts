@@ -8,13 +8,13 @@ import { Color, Gradient } from './core/color';
 import {
   getTheDistanceOfAPointLineSegment,
   determineIfAPointIsWithinAnotherPointArea,
-  getTheDistanceFromPointToLine
-} from "./core/graphic";
+  getTheDistanceFromPointToLine,
+} from './core/graphic';
 
 export {
   Color,
   Gradient,
   getTheDistanceOfAPointLineSegment,
   determineIfAPointIsWithinAnotherPointArea,
-  getTheDistanceFromPointToLine
+  getTheDistanceFromPointToLine,
 };

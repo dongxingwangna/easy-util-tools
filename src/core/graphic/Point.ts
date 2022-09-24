@@ -3,9 +3,9 @@
  * @Author: wdx
  * @Date: 2022/9/24  14:42
  */
- export class Point{
-  private _x: number
-  private _y:number
+export class Point {
+  private _x: number;
+  private _y: number;
 
   constructor(x: number, y: number) {
     this._x = x;
