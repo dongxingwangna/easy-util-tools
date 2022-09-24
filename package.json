@@ -2,7 +2,8 @@
   "name": "graphictools",
   "version": "1.4.3",
   "description": "空间图形工具",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "wdxing",
   "license": "ISC",
   "scripts": {
