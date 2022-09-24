@@ -6,7 +6,7 @@
 
 #### 安装方法
 ~~~
-npm install graphictools
+npm install --save graphictools
 ~~~
 #### 使用说明
 
