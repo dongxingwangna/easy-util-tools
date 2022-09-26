@@ -68,6 +68,31 @@ import { Point } from 'graphictool'
 let point = new Point(0, 0)
 ~~~
 
+###### TimeMonitoring
+~~~
+//导入类
+import { TimeMonitoring } from 'graphictool'
+
+//实例化类 参数依次为统计操作时间的元素，操作的事件列表, 自动暂停统计的延时, 计时开始的回调，计时运行的回调，计时结束的回调
+let timeMonitoring = new TimeMonitoring(el, listeners: string[], autoPauseTime, startFun, running, end)
+
+//参数函数说明：
+startFun()//该方法在计时开始前执行，没有参数
+
+running(isRunning, currentSeconds, total) //该方法在计时过程中执行，参数依次为运行状态，本次计时时间，总计时间
+
+end(isRunning, total, timeLine) //该方法在计时结束后执行，参数依次为运行状态，总计时间，计时时间线
+
+//开始计时
+timeMonitoring.run()
+
+//获取时间 入参为autoDestroy true or false 表示是否自动销毁默认值为false 如果为true 在返回时间后组件事件和计时器将被销毁, 返回值为对象包含 total, timeLIne
+timeMonitoring.getTime()
+
+//销毁实例事件监听，及计时器, 该方法没有返回值
+timeMonitoring.destroy()
+~~~
+
 ##### 方法
 
 ###### getTheDistanceOfAPointLineSegment 获取点到线段的距离

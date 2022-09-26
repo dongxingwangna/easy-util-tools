@@ -257,7 +257,7 @@ export class TimeMonitoring {
     };
   }
 
-  destroy() {
+  destroy():void {
     clearTimeout(this.timeOut);
     this.listeners.map((listener) => {
       this.el.removeEventListener(listener, this.start);
