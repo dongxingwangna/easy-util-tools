@@ -194,7 +194,7 @@ export class TimeMonitoring {
 
   run() {
     this.listeners.map((listener) => {
-      this.el.addEventListener(listener, this.start);
+      this.el.addEventListener(listener, this.start.bind(this));
     });
   }
 
