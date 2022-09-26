@@ -21,6 +21,5 @@ export {
   getTheDistanceOfAPointLineSegment,
   getTheDistanceFromPointToLine,
   determineIfAPointIsWithinAnotherPointArea,
-  TimeMonitoring
+  TimeMonitoring,
 };
-
