@@ -236,8 +236,8 @@ export class TimeMonitoring {
   }
 
   stop() {
-    let currentTime = moment();
     clearTimeout(this.timeOut);
+    let currentTime = moment();
     this.timeLine.push(
       new time(
         this.startTime.format('YYYY MM DD HH:mm:ss'),
