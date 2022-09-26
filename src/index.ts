@@ -12,6 +12,7 @@ import {
   getTheDistanceFromPointToLine,
 } from './core/graphic';
 import { Point } from './core/graphic/Point';
+import { TimeMonitoring } from './core/TimeMonitoring';
 
 export {
   Color,
@@ -20,5 +21,6 @@ export {
   getTheDistanceOfAPointLineSegment,
   getTheDistanceFromPointToLine,
   determineIfAPointIsWithinAnotherPointArea,
+  TimeMonitoring
 };
 

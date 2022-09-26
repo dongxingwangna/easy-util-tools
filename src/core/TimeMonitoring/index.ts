@@ -1,4 +1,9 @@
-import { debounce, sum } from "lodash";
+/**
+ * @docName: index.ts
+ * @Author: wdx
+ * @Date: 2022/9/26  14:59
+ */
+ import { debounce, sum } from "lodash";
 import moment = require("moment");
 
 class time {
