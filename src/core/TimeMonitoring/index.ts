@@ -7,8 +7,11 @@ import { debounce, sum } from 'lodash';
 import moment = require('moment');
 
 class time {
+  // 开始时间
   private _startTime: string;
+  // 结束时间
   private _endTime: string;
+  // 总计时间 秒
   private _total: number;
 
   get total(): number {
@@ -42,18 +45,39 @@ class time {
   }
 }
 
+/**
+ * 计时类统计页面操作时间
+ * @param el
+ * @param listeners
+ * @param autoPauseTime
+ * @param startFun
+ * @param running
+ * @param end
+ */
 export class TimeMonitoring {
+  // 监听事件元素
   private _el: HTMLElement;
+  // 事件列表
   private _listeners: string[] = ['click'];
+  // 当前计时时间
   private _currentTime: number = 0;
+  // 总计时间
   private _totalTime: number = 0;
+  // 计时开始回调
   private _startFun: Function;
+  // 计时运行回调
   private _running: Function;
+  // 计时结束回调
   private _end: Function;
+  // 计时时间线 包含一小次计时的开始时间和结束时间，总秒数
   private _timeLine: time[] = [];
+  // 自动暂停计时时间
   private _autoPauseTime: number;
+  // 循环计时器指针
   private _timeOut: number = 0;
+  // 每次开始计时时间
   private _startTime: moment.Moment = moment();
+  // 运行状态
   private _isRunning: boolean = false;
 
   get isRunning(): boolean {
