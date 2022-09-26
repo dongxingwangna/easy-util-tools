@@ -79,7 +79,7 @@ export class TimeMonitoring {
   private _startTime: moment.Moment = moment();
   // 运行状态
   private _isRunning: boolean = false;
-  private _pause: Function
+  private _pause: Function;
 
   get pause(): Function {
     return this._pause;
@@ -127,7 +127,7 @@ export class TimeMonitoring {
     this._running = running;
     this._autoPauseTime = autoPauseTime;
     this._end = end;
-    this._pause =  debounce(this.stop, this.autoPauseTime, {
+    this._pause = debounce(this.stop, this.autoPauseTime, {
       leading: false,
       trailing: true,
     });
@@ -208,7 +208,7 @@ export class TimeMonitoring {
   run() {
     this.listeners.map((listener) => {
       this.el.addEventListener(listener, () => {
-        this.start.call(this)
+        this.start.call(this);
       });
     });
   }
@@ -229,7 +229,7 @@ export class TimeMonitoring {
     }
     if (this.running) {
       let total = sum(this.timeLine.map((time) => time.total));
-      let currentSeconds = currentTime.diff(this.startTime, "seconds");
+      let currentSeconds = currentTime.diff(this.startTime, 'seconds');
       this.running(this.isRunning, currentSeconds, total + currentSeconds);
       this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
     }
@@ -242,7 +242,7 @@ export class TimeMonitoring {
       new time(
         this.startTime.format('YYYY MM DD HH:mm:ss'),
         currentTime.format('YYYY MM DD HH:mm:ss'),
-        currentTime.diff(this.startTime, "seconds"),
+        currentTime.diff(this.startTime, 'seconds'),
       ),
     );
     this.isRunning = false;
@@ -262,7 +262,7 @@ export class TimeMonitoring {
       this.destroy();
     }
     return {
-      total: this.isRunning ? total + currentTime.diff(this.startTime, "seconds") : total,
+      total: this.isRunning ? total + currentTime.diff(this.startTime, 'seconds') : total,
       timeLine: this.timeLine,
     };
   }
