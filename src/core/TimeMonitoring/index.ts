@@ -220,10 +220,12 @@ export class TimeMonitoring {
     }
   }
 
-  pause = debounce(this.stop, this.autoPauseTime, {
-    leading: false,
-    trailing: true,
-  });
+  pause(){
+    return debounce(this.stop, this.autoPauseTime, {
+      leading: false,
+      trailing: true,
+    });
+  }
 
   stop() {
     let currentTime = moment();
