@@ -21,3 +21,4 @@ export {
   getTheDistanceFromPointToLine,
   determineIfAPointIsWithinAnotherPointArea,
 };
+
