@@ -1,8 +1,8 @@
 import {
   getTheDistanceFromPointToLine,
   getTheDistanceOfAPointLineSegment,
-  determineIfAPointIsWithinAnotherPointArea,
-} from '../core/graphic';
+  determineIfAPointIsWithinAnotherPointArea, getTheDistanceBetweenTwoPoints
+} from "../core/graphic";
 import { Point } from '../core/graphic/Point';
 
 test('getTheDistanceOfAPointLineSegment', () => {
@@ -16,3 +16,10 @@ test('getTheDistanceFromPointToLine', () => {
 test('determineIfAPointIsWithinAnotherPointArea', () => {
   expect(determineIfAPointIsWithinAnotherPointArea(new Point(1, 1), new Point(0, 0))).toBe(true);
 });
+
+/**
+ * 两点间距离
+ */
+test('getTheDistanceBetweenTwoPoints', () =>{
+  expect(getTheDistanceBetweenTwoPoints(new Point(-1, 0), new Point(2, 4))).toBe(5)
+})

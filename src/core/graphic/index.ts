@@ -70,3 +70,12 @@ export function getTheDistanceFromPointToLine(point: Point, lineStart: Point, li
   }
   return len;
 }
+
+/**
+ * 获取两点距离
+ * @param point
+ * @param point2
+ */
+export function getTheDistanceBetweenTwoPoints(point: Point, point2: Point): number {
+  return Math.sqrt(Math.pow((point.x - point2.x), 2) + Math.pow(point.y - point2.y, 2))
+}
