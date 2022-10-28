@@ -2,8 +2,8 @@ import {
   getTheDistanceFromPointToLine,
   getTheDistanceOfAPointLineSegment,
   determineIfAPointIsWithinAnotherPointArea,
-  getTheDistanceBetweenTwoPoints,
-} from '../core/graphic';
+  getTheDistanceBetweenTwoPoints, getTheClosestPoint
+} from "../core/graphic";
 import { Point } from '../core/graphic/Point';
 
 test('getTheDistanceOfAPointLineSegment', () => {
@@ -24,3 +24,19 @@ test('determineIfAPointIsWithinAnotherPointArea', () => {
 test('getTheDistanceBetweenTwoPoints', () => {
   expect(getTheDistanceBetweenTwoPoints(new Point(-1, 0), new Point(2, 4))).toBe(5);
 });
+
+/**
+ * getTheClosestPoint
+ */
+test('getTheClosestPoint',()=>{
+  expect(
+    getTheClosestPoint(new Point(0, 0),
+      [
+        new Point(1, 1),
+        new Point(2, 0),
+        new Point(1, 0),
+      ]
+    )
+  )
+    .toEqual({index: 2, data: new Point(1,0)})
+})
