@@ -79,3 +79,20 @@ export function getTheDistanceFromPointToLine(point: Point, lineStart: Point, li
 export function getTheDistanceBetweenTwoPoints(point: Point, point2: Point): number {
   return Math.sqrt(Math.pow((point.x - point2.x), 2) + Math.pow(point.y - point2.y, 2))
 }
+
+/**
+ * 获取两点与x轴夹角
+ * @param point
+ * @param point2
+ * @param isDirection 是否判断方向
+ */
+export function obtainTheAngleBetweenTwoPointsAndTheXAxis(point: Point, point2: Point, isDirection: boolean = false): number {
+  let dx = point2.x - point.x;
+  let dy = point2.y - point.y;
+  let dis = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
+  let rote = dis > 0 ? Math.round(Math.asin(dy / dis) / Math.PI * 180) : 0;
+  if(point2.x < point.x && isDirection) {
+    rote = 180 - rote
+  }
+  return rote
+}
