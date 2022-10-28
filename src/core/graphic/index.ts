@@ -5,7 +5,7 @@
  */
 
 import { Point } from './Point';
-import { PointInfo } from "./PointInfo";
+import { PointInfo } from './PointInfo';
 
 /**
  * 获取点到线段的距离
@@ -107,18 +107,18 @@ export function obtainTheAngleBetweenTwoPointsAndTheXAxis(
  * @param points
  */
 export function getTheClosestPoint(point: Point, points: Point[]): PointInfo {
-  let index:number = 0;
+  let index: number = 0;
   let data: Point = new Point(0, 0);
   let dif: number = 0;
   for (let i = 0; i < points.length; i++) {
-    if(getTheDistanceBetweenTwoPoints(point, points[i])<dif){
+    if (getTheDistanceBetweenTwoPoints(point, points[i]) < dif) {
       index = i;
-      data.x = points[i].x
-      data.y = points[i].y
+      data.x = points[i].x;
+      data.y = points[i].y;
     }
   }
   return {
     index,
-    data
-  }
+    data,
+  };
 }

@@ -3,9 +3,9 @@
  * @Author: wdx
  * @Date: 2022/10/28  14:10
  */
- import { Point } from "./Point";
+import { Point } from './Point';
 
-export interface PointInfo  {
-  index: number,
-  data: Point
+export interface PointInfo {
+  index: number;
+  data: Point;
 }

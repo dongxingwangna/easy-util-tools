@@ -27,5 +27,5 @@ export {
   TimeMonitoring,
   getTheDistanceBetweenTwoPoints,
   obtainTheAngleBetweenTwoPointsAndTheXAxis,
-  getTheClosestPoint
+  getTheClosestPoint,
 };

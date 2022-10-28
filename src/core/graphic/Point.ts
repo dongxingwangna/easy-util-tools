@@ -34,6 +34,6 @@ export class Point {
   }
 
   static isPoint(point: Point): boolean {
-    return point.type === 'Point'
+    return point.type === 'Point';
   }
 }
