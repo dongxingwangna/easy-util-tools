@@ -140,5 +140,14 @@ import { Point, obtainTheAngleBetweenTwoPointsAndTheXAxis } from 'graphictool'
 let angle = obtainTheAngleBetweenTwoPointsAndTheXAxis(point：Point,  point2: Point, isDirection: boolean)
 ~~~
 
+###### getTheClosestPoint 获取与点最近的点
+~~~
+//导入方法
+import { Point, getTheClosestPoint } from 'graphictool'
+
+//获取与点最近的点，返回值为 { index: number, point: Point }
+let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
+~~~
+
 
 

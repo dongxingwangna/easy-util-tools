@@ -12,6 +12,7 @@ import {
   getTheDistanceFromPointToLine,
   obtainTheAngleBetweenTwoPointsAndTheXAxis,
   getTheDistanceBetweenTwoPoints,
+  getTheClosestPoint,
 } from './core/graphic';
 import { Point } from './core/graphic/Point';
 import { TimeMonitoring } from './core/TimeMonitoring';
@@ -26,4 +27,5 @@ export {
   TimeMonitoring,
   getTheDistanceBetweenTwoPoints,
   obtainTheAngleBetweenTwoPointsAndTheXAxis,
+  getTheClosestPoint
 };

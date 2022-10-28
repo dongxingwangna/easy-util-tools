@@ -6,6 +6,7 @@
 export class Point {
   private _x: number;
   private _y: number;
+  private _type: string = 'Point';
 
   constructor(x: number, y: number) {
     this._x = x;
@@ -26,5 +27,13 @@ export class Point {
 
   set y(value: number) {
     this._y = value;
+  }
+
+  get type(): string {
+    return this._type;
+  }
+
+  static isPoint(point: Point): boolean {
+    return point.type === 'Point'
   }
 }
