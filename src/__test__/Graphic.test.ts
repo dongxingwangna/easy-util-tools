@@ -2,7 +2,7 @@ import {
   getTheDistanceFromPointToLine,
   getTheDistanceOfAPointLineSegment,
   determineIfAPointIsWithinAnotherPointArea,
-  getTheDistanceBetweenTwoPoints, getTheClosestPoint
+  getTheDistanceBetweenTwoPoints, getTheClosestPoint, obtainTheAngleBetweenTwoPointsAndTheXAxis
 } from "../core/graphic";
 import { Point } from '../core/graphic/Point';
 
@@ -26,7 +26,17 @@ test('getTheDistanceBetweenTwoPoints', () => {
 });
 
 /**
- * getTheClosestPoint
+ * 获取两点与x轴的夹角
+ */
+test('obtainTheAngleBetweenTwoPointsAndTheXAxis',()=>{
+  expect(
+    obtainTheAngleBetweenTwoPointsAndTheXAxis(new Point(0, 0),new Point(1, 1))
+  ).toBe(45)
+})
+
+
+/**
+ * 获取最近的点
  */
 test('getTheClosestPoint',()=>{
   expect(
