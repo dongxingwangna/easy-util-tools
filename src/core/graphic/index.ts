@@ -110,7 +110,6 @@ export function getTheClosestPoint(point: Point, points: Point[]): PointInfo {
   let index: number = 0;
   let data: Point = new Point(points[0].x, points[0].y);
   let dif: number = getTheDistanceBetweenTwoPoints(point, points[0]);
-  console.log('dif-->', dif);
   for (let i = 0; i < points.length; i++) {
     if (getTheDistanceBetweenTwoPoints(point, points[i]) < dif) {
       index = i;

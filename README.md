@@ -9,6 +9,11 @@
 npm install --save graphictools
 ~~~
 #### 使用说明
+使用npm version patch,minor,major版本管理
+
+使用npm run test 运行测试文件
+
+使用npm publish 发布版本
 
 ##### 类
 
