@@ -77,7 +77,7 @@ export function getTheDistanceFromPointToLine(point: Point, lineStart: Point, li
  * @param point2
  */
 export function getTheDistanceBetweenTwoPoints(point: Point, point2: Point): number {
-  return Math.sqrt(Math.pow((point.x - point2.x), 2) + Math.pow(point.y - point2.y, 2))
+  return Math.sqrt(Math.pow(point.x - point2.x, 2) + Math.pow(point.y - point2.y, 2));
 }
 
 /**
@@ -86,12 +86,16 @@ export function getTheDistanceBetweenTwoPoints(point: Point, point2: Point): num
  * @param point2
  * @param isDirection 是否判断方向
  */
-export function obtainTheAngleBetweenTwoPointsAndTheXAxis(point: Point, point2: Point, isDirection: boolean = false): number {
+export function obtainTheAngleBetweenTwoPointsAndTheXAxis(
+  point: Point,
+  point2: Point,
+  isDirection: boolean = false,
+): number {
   let dy = point2.y - point.y;
-  let dis = getTheDistanceBetweenTwoPoints(point, point2)
-  let rote = dis > 0 ? Math.round(Math.asin(dy / dis) / Math.PI * 180) : 0;
-  if(point2.x < point.x && isDirection) {
-    rote = 180 - rote
+  let dis = getTheDistanceBetweenTwoPoints(point, point2);
+  let rote = dis > 0 ? Math.round((Math.asin(dy / dis) / Math.PI) * 180) : 0;
+  if (point2.x < point.x && isDirection) {
+    rote = 180 - rote;
   }
-  return rote
+  return rote;
 }
