@@ -10,6 +10,8 @@ import {
   getTheDistanceOfAPointLineSegment,
   determineIfAPointIsWithinAnotherPointArea,
   getTheDistanceFromPointToLine,
+  obtainTheAngleBetweenTwoPointsAndTheXAxis,
+  getTheDistanceBetweenTwoPoints,
 } from './core/graphic';
 import { Point } from './core/graphic/Point';
 import { TimeMonitoring } from './core/TimeMonitoring';
@@ -22,4 +24,6 @@ export {
   getTheDistanceFromPointToLine,
   determineIfAPointIsWithinAnotherPointArea,
   TimeMonitoring,
+  getTheDistanceBetweenTwoPoints,
+  obtainTheAngleBetweenTwoPointsAndTheXAxis,
 };
