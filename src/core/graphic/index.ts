@@ -87,9 +87,8 @@ export function getTheDistanceBetweenTwoPoints(point: Point, point2: Point): num
  * @param isDirection 是否判断方向
  */
 export function obtainTheAngleBetweenTwoPointsAndTheXAxis(point: Point, point2: Point, isDirection: boolean = false): number {
-  let dx = point2.x - point.x;
   let dy = point2.y - point.y;
-  let dis = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
+  let dis = getTheDistanceBetweenTwoPoints(point, point2)
   let rote = dis > 0 ? Math.round(Math.asin(dy / dis) / Math.PI * 180) : 0;
   if(point2.x < point.x && isDirection) {
     rote = 180 - rote

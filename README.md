@@ -122,4 +122,23 @@ import { Point, determineIfAPointIsWithinAnotherPointArea } from 'graphictool'
 let isArea = determineIfAPointIsWithinAnotherPointArea(point：Point,  areaPoint: Point, radius: number, type: string)
 ~~~
 
+###### getTheDistanceBetweenTwoPoints 获取两点向量
+~~~
+//导入方法
+import { Point, getTheDistanceBetweenTwoPoints } from 'graphictool'
+
+//获取两点之间的向量，返回值为 number
+let vector = getTheDistanceBetweenTwoPoints(point：Point,  point2: Point)
+~~~
+
+###### getTheDistanceBetweenTwoPoints 获取两点与X轴的夹角
+~~~
+//导入方法
+import { Point, obtainTheAngleBetweenTwoPointsAndTheXAxis } from 'graphictool'
+
+//获取两点之间的向量，返回值为 number
+let angle = obtainTheAngleBetweenTwoPointsAndTheXAxis(point：Point,  point2: Point, isDirection: boolean)
+~~~
+
+
 
