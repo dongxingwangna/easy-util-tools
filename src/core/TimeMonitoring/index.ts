@@ -267,6 +267,11 @@ export class TimeMonitoring {
     };
   }
 
+  reset(){
+    this.startTime = moment()
+    this.timeLine = []
+  }
+
   destroy(): void {
     clearTimeout(this.timeOut);
     this.listeners.map((listener) => {
