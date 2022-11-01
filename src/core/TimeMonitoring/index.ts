@@ -267,9 +267,9 @@ export class TimeMonitoring {
     };
   }
 
-  reset(){
-    this.startTime = moment()
-    this.timeLine = []
+  reset() {
+    this.startTime = moment();
+    this.timeLine = [];
   }
 
   destroy(): void {
