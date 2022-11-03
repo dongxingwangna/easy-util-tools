@@ -275,6 +275,9 @@ export class TimeMonitoring {
     if (this.running) {
       this.running(this.isRunning, 0, 0);
     }
+    if (this.end) {
+      this.end(this.isRunning, 0, this.timeLine);
+    }
   }
 
   destroy(): void {
