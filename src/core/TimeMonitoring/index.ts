@@ -272,6 +272,9 @@ export class TimeMonitoring {
     this.timeLine = [];
     clearTimeout(this.timeOut);
     this.isRunning = false;
+    if (this.running) {
+      this.running(this.isRunning, 0, 0);
+    }
   }
 
   destroy(): void {
