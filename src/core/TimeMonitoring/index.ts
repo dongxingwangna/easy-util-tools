@@ -270,8 +270,8 @@ export class TimeMonitoring {
   reset() {
     this.startTime = moment();
     this.timeLine = [];
-    clearTimeout(this.timeOut)
-    this.isRunning = false
+    clearTimeout(this.timeOut);
+    this.isRunning = false;
   }
 
   destroy(): void {
