@@ -270,14 +270,36 @@ export class TimeMonitoring {
   reset() {
     this.startTime = moment();
     this.timeLine = [];
+    if(!this.isRunning) {
+      this.continue()
+    } else {
+      this.pause()
+    }
+  }
+
+  wait(){
     clearTimeout(this.timeOut);
-    this.isRunning = false;
+    let currentTime = moment();
     if (this.running) {
-      this.running(this.isRunning, 0, 0);
+      let total = sum(this.timeLine.map((time) => time.total));
+      let currentSeconds = currentTime.diff(this.startTime, 'seconds');
+      this.running(this.isRunning, 0, total + currentSeconds);
     }
-    if (this.end) {
-      this.end(this.isRunning, 0, this.timeLine);
-    }
+    this.timeLine.push(
+      new time(
+        this.startTime.format('YYYY MM DD HH:mm:ss'),
+        currentTime.format('YYYY MM DD HH:mm:ss'),
+        currentTime.diff(this.startTime, 'seconds'),
+      ),
+    );
+    this.isRunning = false;
+  }
+
+  continue(){
+    this.startTime = moment()
+    this.calcTime()
+    this.isRunning = true;
+    this.pause()
   }
 
   destroy(): void {
