@@ -270,14 +270,14 @@ export class TimeMonitoring {
   reset() {
     this.startTime = moment();
     this.timeLine = [];
-    if(!this.isRunning) {
-      this.continue()
+    if (!this.isRunning) {
+      this.continue();
     } else {
-      this.pause()
+      this.pause();
     }
   }
 
-  wait(){
+  wait() {
     clearTimeout(this.timeOut);
     let currentTime = moment();
     if (this.running) {
@@ -295,11 +295,11 @@ export class TimeMonitoring {
     this.isRunning = false;
   }
 
-  continue(){
-    this.startTime = moment()
-    this.calcTime()
+  continue() {
+    this.startTime = moment();
+    this.calcTime();
     this.isRunning = true;
-    this.pause()
+    this.pause();
   }
 
   destroy(): void {
