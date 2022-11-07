@@ -284,14 +284,14 @@ export class TimeMonitoring {
       let total = sum(this.timeLine.map((time) => time.total));
       let currentSeconds = currentTime.diff(this.startTime, 'seconds');
       this.running(this.isRunning, 0, total + currentSeconds);
+      this.timeLine.push(
+        new time(
+          this.startTime.format('YYYY MM DD HH:mm:ss'),
+          currentTime.format('YYYY MM DD HH:mm:ss'),
+          currentTime.diff(this.startTime, 'seconds'),
+        ),
+      );
     }
-    this.timeLine.push(
-      new time(
-        this.startTime.format('YYYY MM DD HH:mm:ss'),
-        currentTime.format('YYYY MM DD HH:mm:ss'),
-        currentTime.diff(this.startTime, 'seconds'),
-      ),
-    );
     this.isRunning = false;
   }
 
