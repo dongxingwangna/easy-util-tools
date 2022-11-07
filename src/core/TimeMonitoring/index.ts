@@ -285,7 +285,7 @@ export class TimeMonitoring {
       let currentSeconds = this.isRunning ? currentTime.diff(this.startTime, 'seconds') : 0;
       this.running(this.isRunning, 0, total + currentSeconds);
     }
-    if (this.isRunning){
+    if (this.isRunning) {
       this.timeLine.push(
         new time(
           this.startTime.format('YYYY MM DD HH:mm:ss'),
