@@ -282,8 +282,10 @@ export class TimeMonitoring {
     let currentTime = moment();
     if (this.running) {
       let total = sum(this.timeLine.map((time) => time.total));
-      let currentSeconds = currentTime.diff(this.startTime, 'seconds');
+      let currentSeconds = this.isRunning ? currentTime.diff(this.startTime, 'seconds') : 0;
       this.running(this.isRunning, 0, total + currentSeconds);
+    }
+    if (this.isRunning){
       this.timeLine.push(
         new time(
           this.startTime.format('YYYY MM DD HH:mm:ss'),
