@@ -6,7 +6,7 @@
 import { debounce, sum } from 'lodash';
 import moment = require('moment');
 
-class time {
+class Time {
   // 开始时间
   private _startTime: string;
   // 结束时间
@@ -70,7 +70,7 @@ export class TimeMonitoring {
   // 计时结束回调
   private _end: Function;
   // 计时时间线 包含一小次计时的开始时间和结束时间，总秒数
-  private _timeLine: time[] = [];
+  private _timeLine: Time[] = [];
   // 自动暂停计时时间
   private _autoPauseTime: number;
   // 循环计时器指针
@@ -206,18 +206,18 @@ export class TimeMonitoring {
     this._end = value;
   }
 
-  get timeLine(): time[] {
+  get timeLine(): Time[] {
     return this._timeLine;
   }
 
-  set timeLine(value: time[]) {
+  set timeLine(value: Time[]) {
     this._timeLine = value;
   }
 
   log(name: string): void {
     if (this.isDebugger) {
       let currentTime = moment();
-      console.log(name, this.isRunning, this.getTotal(), this.startTime, currentTime.diff(this.startTime, 'seconds'));
+      console.log(name, this.isRunning, this.getTotal(), this.startTime.format('YYYY MM DD HH:mm:ss'), currentTime.diff(this.startTime, 'seconds'));
     }
   }
 
@@ -250,7 +250,7 @@ export class TimeMonitoring {
       this.isRunning = true;
     }
     if (this.running) {
-      let total = this.getTotal();
+      let total:number = this.getTotal();
       let currentSeconds = currentTime.diff(this.startTime, 'seconds');
       this.running(this.isRunning, currentSeconds, total + currentSeconds);
       this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
@@ -262,7 +262,7 @@ export class TimeMonitoring {
     clearTimeout(this.timeOut);
     let currentTime = moment();
     this.timeLine.push(
-      new time(
+      new Time(
         this.startTime.format('YYYY MM DD HH:mm:ss'),
         currentTime.format('YYYY MM DD HH:mm:ss'),
         currentTime.diff(this.startTime, 'seconds'),
@@ -270,7 +270,7 @@ export class TimeMonitoring {
     );
     this.isRunning = false;
     if (this.end) {
-      let total = this.getTotal();
+      let total:number = this.getTotal();
       this.end(this.isRunning, total, this.timeLine);
     }
     this.log('stop');
@@ -278,10 +278,10 @@ export class TimeMonitoring {
 
   getTime(autoDestroy: boolean = false): {
     total: number;
-    timeLine: time[];
+    timeLine: Time[];
   } {
     let currentTime = moment();
-    let total = this.getTotal();
+    let total:number = this.getTotal();
     if (autoDestroy) {
       this.destroy();
     }
@@ -307,14 +307,14 @@ export class TimeMonitoring {
     clearTimeout(this.timeOut);
     let currentTime = moment();
     if (this.running) {
-      let total = sum(this.timeLine.map((time) => time.total));
+      let total:number = this.getTotal();
       let currentSeconds = this.isRunning ? currentTime.diff(this.startTime, 'seconds') : 0;
       this.running(this.isRunning, 0, total + currentSeconds);
     }
     if (this.isRunning) {
       this.pause.cancel();
       this.timeLine.push(
-        new time(
+        new Time(
           this.startTime.format('YYYY MM DD HH:mm:ss'),
           currentTime.format('YYYY MM DD HH:mm:ss'),
           currentTime.diff(this.startTime, 'seconds'),
