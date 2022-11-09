@@ -79,9 +79,8 @@ export class TimeMonitoring {
   private _startTime: moment.Moment = moment();
   // 运行状态
   private _isRunning: boolean = false;
-  private _pause:any;
-  private _isDebugger: boolean = false
-
+  private _pause: any;
+  private _isDebugger: boolean = false;
 
   get isDebugger(): boolean {
     return this._isDebugger;
@@ -91,7 +90,7 @@ export class TimeMonitoring {
     this._isDebugger = value;
   }
 
-  get pause():any {
+  get pause(): any {
     return this._pause;
   }
 
@@ -137,7 +136,7 @@ export class TimeMonitoring {
     this._running = running;
     this._autoPauseTime = autoPauseTime;
     this._end = end;
-    this._pause  = debounce(this.stop, this.autoPauseTime, {
+    this._pause = debounce(this.stop, this.autoPauseTime, {
       leading: false,
       trailing: true,
     });
@@ -215,15 +214,15 @@ export class TimeMonitoring {
     this._timeLine = value;
   }
 
-  log(name:string):void {
-    if(this.isDebugger) {
-      let currentTime = moment()
-      console.log(name, this.isRunning, this.getTotal(), this.startTime,currentTime.diff(this.startTime, 'seconds'))
+  log(name: string): void {
+    if (this.isDebugger) {
+      let currentTime = moment();
+      console.log(name, this.isRunning, this.getTotal(), this.startTime, currentTime.diff(this.startTime, 'seconds'));
     }
   }
 
-  run():void {
-    this.log('run')
+  run(): void {
+    this.log('run');
     this.listeners.map((listener) => {
       this.el.addEventListener(listener, () => {
         this.start.call(this);
@@ -231,8 +230,8 @@ export class TimeMonitoring {
     });
   }
 
-  start():void {
-    this.log('start')
+  start(): void {
+    this.log('start');
     if (!this.isRunning) {
       this.startFun && this.startFun();
       this.startTime = moment();
@@ -241,12 +240,11 @@ export class TimeMonitoring {
     this.pause();
   }
 
-
-  getTotal():number{
+  getTotal(): number {
     return sum(this.timeLine.map((time) => time.total));
   }
 
-  calcTime():void {
+  calcTime(): void {
     let currentTime = moment();
     if (!this.isRunning) {
       this.isRunning = true;
@@ -256,11 +254,11 @@ export class TimeMonitoring {
       let currentSeconds = currentTime.diff(this.startTime, 'seconds');
       this.running(this.isRunning, currentSeconds, total + currentSeconds);
       this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
-      this.log('calcTime')
+      this.log('calcTime');
     }
   }
 
-  stop():void {
+  stop(): void {
     clearTimeout(this.timeOut);
     let currentTime = moment();
     this.timeLine.push(
@@ -275,7 +273,7 @@ export class TimeMonitoring {
       let total = this.getTotal();
       this.end(this.isRunning, total, this.timeLine);
     }
-    this.log('stop')
+    this.log('stop');
   }
 
   getTime(autoDestroy: boolean = false): {
@@ -287,14 +285,14 @@ export class TimeMonitoring {
     if (autoDestroy) {
       this.destroy();
     }
-    this.log('getTime')
+    this.log('getTime');
     return {
       total: this.isRunning ? total + currentTime.diff(this.startTime, 'seconds') : total,
       timeLine: this.timeLine,
     };
   }
 
-  reset():void {
+  reset(): void {
     this.startTime = moment();
     this.timeLine = [];
     if (!this.isRunning) {
@@ -302,10 +300,10 @@ export class TimeMonitoring {
     } else {
       this.pause();
     }
-    this.log('reset')
+    this.log('reset');
   }
 
-  wait():void {
+  wait(): void {
     clearTimeout(this.timeOut);
     let currentTime = moment();
     if (this.running) {
@@ -314,7 +312,7 @@ export class TimeMonitoring {
       this.running(this.isRunning, 0, total + currentSeconds);
     }
     if (this.isRunning) {
-      this.pause.cancel()
+      this.pause.cancel();
       this.timeLine.push(
         new time(
           this.startTime.format('YYYY MM DD HH:mm:ss'),
@@ -324,15 +322,15 @@ export class TimeMonitoring {
       );
     }
     this.isRunning = false;
-    this.log('wait')
+    this.log('wait');
   }
 
-  continue():void {
+  continue(): void {
     this.startTime = moment();
     this.calcTime();
     this.isRunning = true;
     this.pause();
-    this.log('continue')
+    this.log('continue');
   }
 
   destroy(): void {
@@ -340,6 +338,6 @@ export class TimeMonitoring {
     this.listeners.map((listener) => {
       this.el.removeEventListener(listener, this.start);
     });
-    this.log('destroy')
+    this.log('destroy');
   }
 }
