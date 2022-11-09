@@ -328,8 +328,8 @@ export class TimeMonitoring {
     if (this.isRunning) {
       this.pause.cancel();
       this.stop()
+      this.isRunning = false;
     }
-    this.isRunning = false;
     this.isManualPause = true;
     this.log('wait');
   }
