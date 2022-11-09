@@ -79,8 +79,20 @@ export class TimeMonitoring {
   private _startTime: moment.Moment = moment();
   // 运行状态
   private _isRunning: boolean = false;
+  // 暂停状态
   private _pause: any;
+  // 是否开启debugger
   private _isDebugger: boolean = false;
+  // 是否手动暂停
+  private _isManualPause: boolean = false
+
+  get isManualPause(): boolean {
+    return this._isManualPause;
+  }
+
+  set isManualPause(value: boolean) {
+    this._isManualPause = value;
+  }
 
   get isDebugger(): boolean {
     return this._isDebugger;
@@ -231,11 +243,13 @@ export class TimeMonitoring {
   }
 
   start(): void {
+    if (this.isManualPause) return;
     this.log('start');
     if (!this.isRunning) {
       this.startFun && this.startFun();
       this.startTime = moment();
-      this.calcTime();
+      this.running && this.calcTime();
+      this.isRunning = true;
     }
     this.pause();
   }
@@ -246,20 +260,17 @@ export class TimeMonitoring {
 
   calcTime(): void {
     let currentTime = moment();
-    if (!this.isRunning) {
-      this.isRunning = true;
-    }
-    if (this.running) {
-      let total:number = this.getTotal();
-      let currentSeconds = currentTime.diff(this.startTime, 'seconds');
-      this.running(this.isRunning, currentSeconds, total + currentSeconds);
-      this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
-      this.log('calcTime');
-    }
+    let total:number = this.getTotal();
+    let currentSeconds = currentTime.diff(this.startTime, 'seconds');
+    this.running(this.isRunning, currentSeconds, total + currentSeconds);
+    this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
+    this.log('calcTime');
   }
 
   stop(): void {
-    clearTimeout(this.timeOut);
+    if(this.running) {
+      clearTimeout(this.timeOut);
+    }
     let currentTime = moment();
     this.timeLine.push(
       new Time(
@@ -280,14 +291,17 @@ export class TimeMonitoring {
     total: number;
     timeLine: Time[];
   } {
-    let currentTime = moment();
     let total:number = this.getTotal();
     if (autoDestroy) {
       this.destroy();
     }
+    if(this.isRunning){
+      let currentTime = moment();
+      total += currentTime.diff(this.startTime, 'seconds')
+    }
     this.log('getTime');
     return {
-      total: this.isRunning ? total + currentTime.diff(this.startTime, 'seconds') : total,
+      total: total,
       timeLine: this.timeLine,
     };
   }
@@ -304,32 +318,25 @@ export class TimeMonitoring {
   }
 
   wait(): void {
-    clearTimeout(this.timeOut);
-    let currentTime = moment();
     if (this.running) {
+      clearTimeout(this.timeOut);
+      let currentTime = moment();
       let total:number = this.getTotal();
       let currentSeconds = this.isRunning ? currentTime.diff(this.startTime, 'seconds') : 0;
       this.running(this.isRunning, 0, total + currentSeconds);
     }
     if (this.isRunning) {
       this.pause.cancel();
-      this.timeLine.push(
-        new Time(
-          this.startTime.format('YYYY MM DD HH:mm:ss'),
-          currentTime.format('YYYY MM DD HH:mm:ss'),
-          currentTime.diff(this.startTime, 'seconds'),
-        ),
-      );
+      this.stop()
     }
     this.isRunning = false;
+    this.isManualPause = true;
     this.log('wait');
   }
 
   continue(): void {
-    this.startTime = moment();
-    this.calcTime();
-    this.isRunning = true;
-    this.pause();
+    this.isManualPause = false;
+    this.start()
     this.log('continue');
   }
 
