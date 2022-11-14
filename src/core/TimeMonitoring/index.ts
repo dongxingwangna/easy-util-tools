@@ -5,9 +5,9 @@
  */
 import { debounce, sum } from 'lodash';
 import moment = require('moment');
-import { debug } from "debug";
+import { logger } from "../../utils/debug/debug";
 
-let log  = debug('timeMonitoring');
+const log = logger.extend('timeMonitoring')
 class Time {
   // 开始时间
   private _startTime: string;
