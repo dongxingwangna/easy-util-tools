@@ -155,12 +155,6 @@ let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
 ~~~
 
 ###### gettingPointsOnACircle 获取圆上的点
-~~~
-//导入方法
-import { Point, gettingPointsOnACircle } from 'graphictool'
-
-//获取与点最近的点，返回值为 point:Point,
-~~~
 |        参数        |  参数类型   |  是否必要   |     说明      |   默认值   |        可选项        |
 |:----------------:|:-------:|:-------:|:-----------:|:-------:|:-----------------:|
 |      point       |  Point  |  true   |    圆的中心点    |    -    |         -         |
@@ -170,6 +164,10 @@ import { Point, gettingPointsOnACircle } from 'graphictool'
 |  clockwiseOrNot  | boolean |  false  |   是否顺时针计算   |  false  |       true        |
 
 ~~~
+//导入方法
+import { Point, gettingPointsOnACircle } from 'graphictool'
+
+//获取与点最近的点，返回值为 point:Point,
 let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number, startDirection: string, clockwiseOrNot: boolean)
 ~~~
 
