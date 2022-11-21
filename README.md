@@ -154,5 +154,14 @@ import { Point, getTheClosestPoint } from 'graphictool'
 let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
 ~~~
 
+###### gettingPointsOnACircle 获取圆上的点
+~~~
+//导入方法
+import { Point, gettingPointsOnACircle } from 'graphictool'
+
+//获取与点最近的点，返回值为 point:Point
+let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number)
+~~~
+
 
 
