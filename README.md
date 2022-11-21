@@ -161,13 +161,14 @@ import { Point, gettingPointsOnACircle } from 'graphictool'
 
 //获取与点最近的点，返回值为 point:Point,
 ~~~
-参数｜是否必要｜说明｜默认值｜可选项
---｜--｜--｜--｜———
-point｜true|圆的中心点｜-｜-
-angle|true|要计算圆上点的角度｜-｜-
-r|true｜圆的半径|-|-
-startDirection|false|开始方向｜'right'|'left','top','bottom'
-clockwiseOrNot|false|是否顺时针计算｜false|true
+|        参数        |  参数类型   |  是否必要   |     说明      |   默认值   |        可选项        |
+|:----------------:|:-------:|:-------:|:-----------:|:-------:|:-----------------:|
+|      point       |  Point  |  true   |    圆的中心点    |    -    |         -         |
+|      angle       | number  |  true   |  要计算圆上点的角度  |    -    |         -         |
+|        r         | number  |  true   |    圆的半径     |    -    |         -         |
+|  startDirection  | string  |  false  |    开始方向     |  right  | left, top, bottom |
+|  clockwiseOrNot  | boolean |  false  |   是否顺时针计算   |  false  |       true        |
+
 ~~~
 let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number, startDirection: string, clockwiseOrNot: boolean)
 ~~~
