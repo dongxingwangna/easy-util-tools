@@ -101,61 +101,95 @@ timeMonitoring.destroy()
 ##### 方法
 
 ###### getTheDistanceOfAPointLineSegment 获取点到线段的距离
+|    参数     |  类型   | 是否必要 |   说明   | 默认值 | 可选项 |
+|:---------:|:-----:|:----:|:------:|:---:|:---:|
+|   point   | Point | true |  判断的点  |  -  |  -  |
+| lineStart | Point | true | 线段的开始点 |  -  |  -  |
+|  lineEnd  | Point | true | 线段的结束点 |  -  |  -  |
 ~~~
 //导入方法
 import { Point, getTheDistanceOfAPointLineSegment } from 'graphictool'
 
-//获取距离 参数依次为点，线段点1， 线段点2 返回值为number
-let distance = getTheDistanceOfAPointLineSegment(point：Point,  lineStart: Point, lineEnd: Point)
+//返回值为number
+let distance: number = getTheDistanceOfAPointLineSegment(point：Point,  lineStart: Point, lineEnd: Point)
 ~~~
 
 ###### getTheDistanceFromPointToLine 获取点到线的距离最近距离
+|    参数     |  类型   | 是否必要 |  说明   | 默认值 | 可选项 |
+|:---------:|:-----:|:----:|:-----:|:---:|:---:|
+|   point   | Point | true | 判断的点  |  -  |  -  |
+| lineStart | Point | true | 线的开始点 |  -  |  -  |
+|  lineEnd  | Point | true | 线的结束点 |  -  |  -  |
 ~~~
 //导入方法
 import { Point, getTheDistanceFromPointToLine } from 'graphictool'
 
-//获取距离 参数依次为点，线段点1， 线段点2 返回值为 number
-let distance = getTheDistanceFromPointToLine(point：Point,  lineStart: Point, lineEnd: Point)
+//返回值为 number
+let distance:number = getTheDistanceFromPointToLine(point：Point,  lineStart: Point, lineEnd: Point)
 ~~~
 
 ###### determineIfAPointIsWithinAnotherPointArea 判断一个点是否在一个点一定大小区域内
+|    参数     |   类型   | 是否必要  |   说明    |  默认值  |  可选项   |
+|:---------:|:------:|:-----:|:-------:|:-----:|:------:|
+|   point   | Point  | true  |  判断的点   |   -   |   -    |
+| areaPoint | Point  | true  |   区域点   |   -   |   -    |
+|  radius   | number | true  |  区域大小   |   -   |   -    |
+|   type    | string | false | 检测的区域类型 | round | square |
 ~~~
 //导入方法
 import { Point, determineIfAPointIsWithinAnotherPointArea } from 'graphictool'
 
-//判断点是否在另一个点区域内 参数依次为点，区域点， 范围 number 默认值5，检测类型 string 默认值 round 可选square，返回值为 boolean
-let isArea = determineIfAPointIsWithinAnotherPointArea(point：Point,  areaPoint: Point, radius: number, type: string)
+//判返回值为 boolean
+let isArea:boolean = determineIfAPointIsWithinAnotherPointArea(point：Point,  areaPoint: Point, radius: number, type: string)
 ~~~
 
-###### getTheDistanceBetweenTwoPoints 获取两点向量
+###### getTheDistanceBetweenTwoPoints 获取两点距离
+|   参数   |   类型   | 是否必要  |  说明  |  默认值  |  可选项   |
+|:------:|:------:|:-----:|:----:|:-----:|:------:|
+| point  | Point  | true  | 第一个点 |   -   |   -    |
+| point2 | Point  | true  | 第二个点 |   -   |   -    |
+
 ~~~
 //导入方法
 import { Point, getTheDistanceBetweenTwoPoints } from 'graphictool'
 
-//获取两点之间的向量，返回值为 number
-let vector = getTheDistanceBetweenTwoPoints(point：Point,  point2: Point)
+//返回值为 number
+let distance:number = getTheDistanceBetweenTwoPoints(point：Point,  point2: Point)
 ~~~
 
 ###### getTheDistanceBetweenTwoPoints 获取两点与X轴的夹角
+
+|     参数      |   类型    | 是否必要  |   说明   |  默认值  | 可选项  |
+|:-----------:|:-------:|:-----:|:------:|:-----:|:----:|
+|    point    |  Point  | true  |  第一个点  |   -   |  -   |
+|   point2    |  Point  | true  |  第二个点  |   -   |  -   |
+| isDirection | boolean | false | 是否方向判断 | false | true |
+
 ~~~
 //导入方法
 import { Point, obtainTheAngleBetweenTwoPointsAndTheXAxis } from 'graphictool'
 
-//获取两点之间的向量，返回值为 number
-let angle = obtainTheAngleBetweenTwoPointsAndTheXAxis(point：Point,  point2: Point, isDirection: boolean)
+//返回值为 number
+let angle: number = obtainTheAngleBetweenTwoPointsAndTheXAxis(point：Point,  point2: Point, isDirection: boolean)
 ~~~
 
 ###### getTheClosestPoint 获取与点最近的点
+
+|   参数   |   类型    | 是否必要 |  说明   | 默认值 | 可选项 |
+|:------:|:-------:|:----:|:-----:|:---:|:---:|
+| point  |  Point  | true |  参考点  |  -  |  -  |
+| points | Point[] | true | 要判断的点 |  -  |  -  |
+
 ~~~
 //导入方法
 import { Point, getTheClosestPoint } from 'graphictool'
 
-//获取与点最近的点，返回值为 { index: number, point: Point }
+//返回值为 { index: number, point: Point }
 let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
 ~~~
 
 ###### gettingPointsOnACircle 获取圆上的点
-|        参数        |  参数类型   |  是否必要   |     说明      |   默认值   |        可选项        |
+|        参数        |   类型    |  是否必要   |     说明      |   默认值   |        可选项        |
 |:----------------:|:-------:|:-------:|:-----------:|:-------:|:-----------------:|
 |      point       |  Point  |  true   |    圆的中心点    |    -    |         -         |
 |      angle       | number  |  true   |  要计算圆上点的角度  |    -    |         -         |
@@ -167,7 +201,7 @@ let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
 //导入方法
 import { Point, gettingPointsOnACircle } from 'graphictool'
 
-//获取与点最近的点，返回值为 point:Point,
+//返回值为 point:Point,
 let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number, startDirection: string, clockwiseOrNot: boolean)
 ~~~
 
