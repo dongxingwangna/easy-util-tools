@@ -122,3 +122,17 @@ export function getTheClosestPoint(point: Point, points: Point[]): PointInfo {
     data,
   };
 }
+
+/**
+ * 获取圆上的点
+ * @param point
+ * @param angle
+ * @param r
+ */
+export function gettingPointsOnACircle(point: Point, angle: number, r: number){
+  const radian = (2 * Math.PI / 360) * angle;
+  return new Point(
+    Number((Math.cos(radian) * r).toFixed(2)),
+    Number((Math.sin(radian) * r).toFixed(2))
+  )
+}

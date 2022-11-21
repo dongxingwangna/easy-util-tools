@@ -4,8 +4,8 @@ import {
   determineIfAPointIsWithinAnotherPointArea,
   getTheDistanceBetweenTwoPoints,
   getTheClosestPoint,
-  obtainTheAngleBetweenTwoPointsAndTheXAxis,
-} from '../core/graphic';
+  obtainTheAngleBetweenTwoPointsAndTheXAxis, gettingPointsOnACircle
+} from "../core/graphic";
 import { Point } from '../core/graphic/Point';
 
 test('getTheDistanceOfAPointLineSegment', () => {
@@ -43,3 +43,10 @@ test('getTheClosestPoint', () => {
     data: new Point(1, 0),
   });
 });
+
+/**
+ * 获取圆上的点
+ */
+test('gettingPointsOnACircle',()=>{
+  expect(gettingPointsOnACircle(new Point(0,0), 0, 5)).toEqual(new Point(5, 0))
+})
