@@ -128,9 +128,27 @@ export function getTheClosestPoint(point: Point, points: Point[]): PointInfo {
  * @param point
  * @param angle
  * @param r
+ * @param startDirection
+ * @param clockwiseOrNot
  */
-export function gettingPointsOnACircle(point: Point, angle: number, r: number){
-  const radian = (2 * Math.PI / 360) * angle;
+export function gettingPointsOnACircle(point: Point, angle: number, r: number, startDirection: String = 'right', clockwiseOrNot: boolean = false){
+  switch (startDirection) {
+    case 'top':
+      angle += 90
+      break
+    case 'left':
+      angle += 180
+      break
+    case 'bottom':
+      angle += 270
+      break
+    default:
+      angle += 0
+  }
+  let radian = (2 * Math.PI / 360) * angle;
+  if(clockwiseOrNot) {
+    radian = radian * -1
+  }
   return new Point(
     Number((Math.cos(radian) * r).toFixed(2)),
     Number((Math.sin(radian) * r).toFixed(2))
