@@ -131,28 +131,31 @@ export function getTheClosestPoint(point: Point, points: Point[]): PointInfo {
  * @param startDirection
  * @param clockwiseOrNot
  */
-export function gettingPointsOnACircle(point: Point, angle: number, r: number, startDirection: String = 'right', clockwiseOrNot: boolean = false){
+export function gettingPointsOnACircle(
+  point: Point,
+  angle: number,
+  r: number,
+  startDirection: String = 'right',
+  clockwiseOrNot: boolean = false,
+) {
   switch (startDirection) {
     case 'top':
-      angle += 90
-      break
+      angle += 90;
+      break;
     case 'left':
-      angle += 180
-      break
+      angle += 180;
+      break;
     case 'bottom':
-      angle += 270
-      break
+      angle += 270;
+      break;
     default:
-      angle += 0
+      angle += 0;
   }
-  let radian = (2 * Math.PI / 360) * angle;
-  if(clockwiseOrNot) {
-    radian = radian * -1
+  let radian = ((2 * Math.PI) / 360) * angle;
+  if (clockwiseOrNot) {
+    radian = radian * -1;
   }
-  return new Point(
-    Number((Math.cos(radian) * r).toFixed(2)),
-    Number((Math.sin(radian) * r).toFixed(2))
-  )
+  return new Point(Number((Math.cos(radian) * r).toFixed(2)), Number((Math.sin(radian) * r).toFixed(2)));
 }
 
 /**
@@ -162,20 +165,25 @@ export function gettingPointsOnACircle(point: Point, angle: number, r: number, s
  * @param radius
  * @param type
  */
-export function judgeWhetherThePointIsOnline(point: Point, points:Point[], radius?:number, type?:string): {index:number, data:Point}{
-  let res:{
-    index: number,
-    data: Point
+export function judgeWhetherThePointIsOnline(
+  point: Point,
+  points: Point[],
+  radius?: number,
+  type?: string,
+): { index: number; data: Point } {
+  let res: {
+    index: number;
+    data: Point;
   } = {
     index: -1,
-    data: new Point(0, 0)
-  }
+    data: new Point(0, 0),
+  };
   for (let i = 0; i < points.length; i++) {
     const b = determineIfAPointIsWithinAnotherPointArea(point, points[i], radius, type);
-    if(b){
+    if (b) {
       res.index = i;
       res.data = points[i];
     }
   }
-  return res
+  return res;
 }

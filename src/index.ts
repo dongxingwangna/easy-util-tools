@@ -31,5 +31,5 @@ export {
   obtainTheAngleBetweenTwoPointsAndTheXAxis,
   getTheClosestPoint,
   gettingPointsOnACircle,
-  judgeWhetherThePointIsOnline
+  judgeWhetherThePointIsOnline,
 };
