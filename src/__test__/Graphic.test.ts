@@ -4,7 +4,7 @@ import {
   determineIfAPointIsWithinAnotherPointArea,
   getTheDistanceBetweenTwoPoints,
   getTheClosestPoint,
-  obtainTheAngleBetweenTwoPointsAndTheXAxis, gettingPointsOnACircle
+  obtainTheAngleBetweenTwoPointsAndTheXAxis, gettingPointsOnACircle, judgeWhetherThePointIsOnline
 } from "../core/graphic";
 import { Point } from '../core/graphic/Point';
 
@@ -49,4 +49,15 @@ test('getTheClosestPoint', () => {
  */
 test('gettingPointsOnACircle',()=>{
   expect(gettingPointsOnACircle(new Point(0,0), 0, 5)).toEqual(new Point(5, 0))
+})
+
+
+/**
+ * 判断点是否在线节点上
+ */
+test('judgeWhetherThePointIsOnline',()=>{
+  expect(judgeWhetherThePointIsOnline(new Point(1, 3), [new Point(1,1), new Point(203,205)], 1)).toEqual({
+    index: -1,
+    data: new Point(0,0)
+  })
 })

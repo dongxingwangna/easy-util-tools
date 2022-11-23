@@ -205,5 +205,21 @@ import { Point, gettingPointsOnACircle } from 'graphictool'
 let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number, startDirection: string, clockwiseOrNot: boolean)
 ~~~
 
+###### judgeWhetherThePointIsOnline 判断点是否在线的节点上
+|   参数   |   类型    | 是否必要  |  说明   |  默认值  |  可选项   |
+|:------:|:-------:|:-----:|:-----:|:-----:|:------:|
+| point  |  Point  | true  | 要判断的点 |   -   |   -    |
+| points | Point[] | true  | 线上的节点 |   -   |   -    |
+| radius | number  | false | 误差半径  |   5   |   -    |
+|  type  | string  | false |  类型   | round | square |
+
+~~~
+//导入方法
+import { Point, judgeWhetherThePointIsOnline } from 'graphictool'
+
+//返回值为 info{status: number, index: number, data: Point},
+let PointInfo = judgeWhetherThePointIsOnline(point：Point, points: Point[] , radius: number, type: string)
+~~~
+
 
 

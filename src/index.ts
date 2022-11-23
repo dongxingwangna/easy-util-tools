@@ -14,6 +14,7 @@ import {
   getTheDistanceBetweenTwoPoints,
   getTheClosestPoint,
   gettingPointsOnACircle,
+  judgeWhetherThePointIsOnline,
 } from './core/graphic';
 import { Point } from './core/graphic/Point';
 import { TimeMonitoring } from './core/TimeMonitoring';
@@ -29,5 +30,6 @@ export {
   getTheDistanceBetweenTwoPoints,
   obtainTheAngleBetweenTwoPointsAndTheXAxis,
   getTheClosestPoint,
-  gettingPointsOnACircle
+  gettingPointsOnACircle,
+  judgeWhetherThePointIsOnline
 };

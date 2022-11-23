@@ -154,3 +154,28 @@ export function gettingPointsOnACircle(point: Point, angle: number, r: number, s
     Number((Math.sin(radian) * r).toFixed(2))
   )
 }
+
+/**
+ * 判断点是否在线的节点上
+ * @param point
+ * @param points
+ * @param radius
+ * @param type
+ */
+export function judgeWhetherThePointIsOnline(point: Point, points:Point[], radius?:number, type?:string): {index:number, data:Point}{
+  let res:{
+    index: number,
+    data: Point
+  } = {
+    index: -1,
+    data: new Point(0, 0)
+  }
+  for (let i = 0; i < points.length; i++) {
+    const b = determineIfAPointIsWithinAnotherPointArea(point, points[i], radius, type);
+    if(b){
+      res.index = i;
+      res.data = points[i];
+    }
+  }
+  return res
+}
