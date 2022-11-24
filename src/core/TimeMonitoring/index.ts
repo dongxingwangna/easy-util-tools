@@ -66,11 +66,11 @@ export class TimeMonitoring {
   // 总计时间
   private _totalTime: number = 0;
   // 计时开始回调
-  private _startFun: Function;
+  private _startFun: Function | undefined;
   // 计时运行回调
-  private _running: Function;
+  private _running: Function | undefined;
   // 计时结束回调
-  private _end: Function;
+  private _end: Function | undefined;
   // 计时时间线 包含一小次计时的开始时间和结束时间，总秒数
   private _timeLine: Time[] = [];
   // 自动暂停计时时间
@@ -141,9 +141,9 @@ export class TimeMonitoring {
     el: HTMLElement,
     listeners: string[],
     autoPauseTime = 6000,
-    startFun: Function,
-    running: Function,
-    end: Function,
+    startFun?: Function,
+    running?: Function,
+    end?: Function,
   ) {
     this._el = el;
     this._listeners = listeners;
@@ -197,27 +197,27 @@ export class TimeMonitoring {
     this._totalTime = value;
   }
 
-  get startFun(): Function {
+  get startFun(): Function | undefined {
     return this._startFun;
   }
 
-  set startFun(value: Function) {
+  set startFun(value: Function | undefined) {
     this._startFun = value;
   }
 
-  get running(): Function {
+  get running(): Function | undefined {
     return this._running;
   }
 
-  set running(value: Function) {
+  set running(value: Function | undefined) {
     this._running = value;
   }
 
-  get end(): Function {
+  get end(): Function | undefined {
     return this._end;
   }
 
-  set end(value: Function) {
+  set end(value: Function | undefined) {
     this._end = value;
   }
 
@@ -271,7 +271,7 @@ export class TimeMonitoring {
     let currentTime = moment();
     let total: number = this.getTotal();
     let currentSeconds = currentTime.diff(this.startTime, 'seconds');
-    this.running(this.isRunning, currentSeconds, total + currentSeconds);
+    (<Function>this.running)(this.isRunning, currentSeconds, total + currentSeconds);
     this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
     this.log('calcTime');
   }
