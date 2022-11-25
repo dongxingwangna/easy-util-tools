@@ -58,7 +58,7 @@ class Time {
  */
 export class TimeMonitoring {
   // 监听事件元素
-  private _el: HTMLElement;
+  private _el: HTMLElement | Window | Document;
   // 事件列表
   private _listeners: string[] = ['click'];
   // 当前计时时间
@@ -87,6 +87,14 @@ export class TimeMonitoring {
   private _isDebugger: boolean = false;
   // 是否手动暂停
   private _isManualPause: boolean = false;
+
+  get el(): HTMLElement | Window | Document {
+    return this._el;
+  }
+
+  set el(value: HTMLElement | Window | Document) {
+    this._el = value;
+  }
 
   get isManualPause(): boolean {
     return this._isManualPause;
@@ -138,12 +146,12 @@ export class TimeMonitoring {
   }
 
   constructor(
-    el: HTMLElement,
+    el: HTMLElement|Window | Document,
     listeners: string[],
     autoPauseTime = 6000,
     startFun?: Function,
     running?: Function,
-    end?: Function,
+    end?: Function
   ) {
     this._el = el;
     this._listeners = listeners;
@@ -155,14 +163,6 @@ export class TimeMonitoring {
       leading: false,
       trailing: true,
     });
-  }
-
-  get el(): HTMLElement {
-    return this._el;
-  }
-
-  set el(value: HTMLElement) {
-    this._el = value;
   }
 
   get autoPauseTime(): number {
