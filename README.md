@@ -1,24 +1,20 @@
 # graphictools
 
-#### 介绍
+## 介绍
 图形工具
 
 
-#### 安装方法
-~~~
+## 安装方法
+~~~ bash
 npm install --save graphictools
 ~~~
-#### 使用说明
-使用npm version patch,minor,major版本管理
 
-使用npm run test 运行测试文件
+## 使用说明
 
-使用npm publish 发布版本
+### 类
 
-##### 类
-
-###### Color 
-~~~
+#### Color
+~~~ javascript
 // 导入模块
 import { Color } from graphictools
 
@@ -45,9 +41,9 @@ color.readChannelColor(0, 0, 0)
 
 ~~~
 
-###### Gradient
+#### Gradient
 这个类可以自定义一个色谱，然后获取色谱上的某一点的颜色返回值是 实例化的Color 具体方法请参照上述Color类
-~~~
+~~~ javascript
 //导入模块
 import { Gradient } from graphictool
 
@@ -64,8 +60,8 @@ let color = grandient.getColor(v)
 gradient.chromatogram = Color[]
 ~~~
 
-###### Point
-~~~
+#### Point
+~~~ javascript
 //导入类
 import { Point } from 'graphictool'
 
@@ -73,8 +69,8 @@ import { Point } from 'graphictool'
 let point = new Point(0, 0)
 ~~~
 
-###### TimeMonitoring
-~~~
+#### TimeMonitoring
+~~~ javascript
 //导入类
 import { TimeMonitoring } from 'graphictool'
 
@@ -98,15 +94,15 @@ timeMonitoring.getTime()
 timeMonitoring.destroy()
 ~~~
 
-##### 方法
+### 方法
 
-###### getTheDistanceOfAPointLineSegment 获取点到线段的距离
+#### getTheDistanceOfAPointLineSegment 获取点到线段的距离
 |    参数     |  类型   | 是否必要 |   说明   | 默认值 | 可选项 |
 |:---------:|:-----:|:----:|:------:|:---:|:---:|
 |   point   | Point | true |  判断的点  |  -  |  -  |
 | lineStart | Point | true | 线段的开始点 |  -  |  -  |
 |  lineEnd  | Point | true | 线段的结束点 |  -  |  -  |
-~~~
+~~~ javascript
 //导入方法
 import { Point, getTheDistanceOfAPointLineSegment } from 'graphictool'
 
@@ -114,13 +110,14 @@ import { Point, getTheDistanceOfAPointLineSegment } from 'graphictool'
 let distance: number = getTheDistanceOfAPointLineSegment(point：Point,  lineStart: Point, lineEnd: Point)
 ~~~
 
-###### getTheDistanceFromPointToLine 获取点到线的距离最近距离
+#### getTheDistanceFromPointToLine 获取点到线的距离最近距离
 |    参数     |  类型   | 是否必要 |  说明   | 默认值 | 可选项 |
 |:---------:|:-----:|:----:|:-----:|:---:|:---:|
 |   point   | Point | true | 判断的点  |  -  |  -  |
 | lineStart | Point | true | 线的开始点 |  -  |  -  |
 |  lineEnd  | Point | true | 线的结束点 |  -  |  -  |
-~~~
+
+~~~ javascript
 //导入方法
 import { Point, getTheDistanceFromPointToLine } from 'graphictool'
 
@@ -128,14 +125,15 @@ import { Point, getTheDistanceFromPointToLine } from 'graphictool'
 let distance:number = getTheDistanceFromPointToLine(point：Point,  lineStart: Point, lineEnd: Point)
 ~~~
 
-###### determineIfAPointIsWithinAnotherPointArea 判断一个点是否在一个点一定大小区域内
+#### determineIfAPointIsWithinAnotherPointArea 判断一个点是否在一个点一定大小区域内
 |    参数     |   类型   | 是否必要  |   说明    |  默认值  |  可选项   |
 |:---------:|:------:|:-----:|:-------:|:-----:|:------:|
 |   point   | Point  | true  |  判断的点   |   -   |   -    |
 | areaPoint | Point  | true  |   区域点   |   -   |   -    |
 |  radius   | number | true  |  区域大小   |   -   |   -    |
 |   type    | string | false | 检测的区域类型 | round | square |
-~~~
+
+~~~ javascript
 //导入方法
 import { Point, determineIfAPointIsWithinAnotherPointArea } from 'graphictool'
 
@@ -143,13 +141,13 @@ import { Point, determineIfAPointIsWithinAnotherPointArea } from 'graphictool'
 let isArea:boolean = determineIfAPointIsWithinAnotherPointArea(point：Point,  areaPoint: Point, radius: number, type: string)
 ~~~
 
-###### getTheDistanceBetweenTwoPoints 获取两点距离
+#### getTheDistanceBetweenTwoPoints 获取两点距离
 |   参数   |   类型   | 是否必要  |  说明  |  默认值  |  可选项   |
 |:------:|:------:|:-----:|:----:|:-----:|:------:|
 | point  | Point  | true  | 第一个点 |   -   |   -    |
 | point2 | Point  | true  | 第二个点 |   -   |   -    |
 
-~~~
+~~~ javascript
 //导入方法
 import { Point, getTheDistanceBetweenTwoPoints } from 'graphictool'
 
@@ -157,7 +155,7 @@ import { Point, getTheDistanceBetweenTwoPoints } from 'graphictool'
 let distance:number = getTheDistanceBetweenTwoPoints(point：Point,  point2: Point)
 ~~~
 
-###### getTheDistanceBetweenTwoPoints 获取两点与X轴的夹角
+#### getTheDistanceBetweenTwoPoints 获取两点与X轴的夹角
 
 |     参数      |   类型    | 是否必要  |   说明   |  默认值  | 可选项  |
 |:-----------:|:-------:|:-----:|:------:|:-----:|:----:|
@@ -165,7 +163,7 @@ let distance:number = getTheDistanceBetweenTwoPoints(point：Point,  point2: Poi
 |   point2    |  Point  | true  |  第二个点  |   -   |  -   |
 | isDirection | boolean | false | 是否方向判断 | false | true |
 
-~~~
+~~~ javascript
 //导入方法
 import { Point, obtainTheAngleBetweenTwoPointsAndTheXAxis } from 'graphictool'
 
@@ -180,7 +178,7 @@ let angle: number = obtainTheAngleBetweenTwoPointsAndTheXAxis(point：Point,  po
 | point  |  Point  | true |  参考点  |  -  |  -  |
 | points | Point[] | true | 要判断的点 |  -  |  -  |
 
-~~~
+~~~ javascript
 //导入方法
 import { Point, getTheClosestPoint } from 'graphictool'
 
@@ -188,7 +186,7 @@ import { Point, getTheClosestPoint } from 'graphictool'
 let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
 ~~~
 
-###### gettingPointsOnACircle 获取圆上的点
+#### gettingPointsOnACircle 获取圆上的点
 |        参数        |   类型    |  是否必要   |     说明      |   默认值   |        可选项        |
 |:----------------:|:-------:|:-------:|:-----------:|:-------:|:-----------------:|
 |      point       |  Point  |  true   |    圆的中心点    |    -    |         -         |
@@ -197,7 +195,7 @@ let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
 |  startDirection  | string  |  false  |    开始方向     |  right  | left, top, bottom |
 |  clockwiseOrNot  | boolean |  false  |   是否顺时针计算   |  false  |       true        |
 
-~~~
+~~~ javascript
 //导入方法
 import { Point, gettingPointsOnACircle } from 'graphictool'
 
@@ -205,7 +203,7 @@ import { Point, gettingPointsOnACircle } from 'graphictool'
 let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number, startDirection: string, clockwiseOrNot: boolean)
 ~~~
 
-###### judgeWhetherThePointIsOnline 判断点是否在线的节点上
+#### judgeWhetherThePointIsOnline 判断点是否在线的节点上
 |   参数   |   类型    | 是否必要  |  说明   |  默认值  |  可选项   |
 |:------:|:-------:|:-----:|:-----:|:-----:|:------:|
 | point  |  Point  | true  | 要判断的点 |   -   |   -    |
@@ -213,13 +211,10 @@ let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number,
 | radius | number  | false | 误差半径  |   5   |   -    |
 |  type  | string  | false |  类型   | round | square |
 
-~~~
+~~~ javascript
 //导入方法
 import { Point, judgeWhetherThePointIsOnline } from 'graphictool'
 
 //返回值为 info{status: number, index: number, data: Point},
 let PointInfo = judgeWhetherThePointIsOnline(point：Point, points: Point[] , radius: number, type: string)
 ~~~
-
-
-
