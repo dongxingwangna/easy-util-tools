@@ -1,5 +1,5 @@
 {
-  "name": "richUtils",
+  "name": "easy_utils",
   "version": "1.0.0",
   "description": "A wealth of practical tools",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
   "files": [
     "lib/**/*"
   ],
-  "homepage": "https://github.com/dongxingwangna/richUtils",
+  "homepage": "https://github.com/dongxingwangna/easy_utils",
   "keywords": [
     "graphic",
     "tool",

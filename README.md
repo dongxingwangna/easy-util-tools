@@ -1,11 +1,11 @@
-#richUtils
+#easy_utils
 
 ## 介绍
 图形工具
 
 ## 安装方法
 ~~~ bash
-npm install --save richUtils
+npm install --save easy_utils
 ~~~
 
 ## 使用说明
@@ -15,7 +15,7 @@ npm install --save richUtils
 #### Color
 ~~~ javascript
 // 导入模块
-import { Color } from 'richUtils'
+import { Color } from 'easy_utils'
 
 //实例化类
 let color = new Color(r:number, g:number, b: number)
@@ -44,7 +44,7 @@ color.readChannelColor(0, 0, 0)
 这个类可以自定义一个色谱，然后获取色谱上的某一点的颜色返回值是 实例化的Color 具体方法请参照上述Color类
 ~~~ javascript
 //导入模块
-import { Gradient } from 'richUtils'
+import { Gradient } from 'easy_utils'
 
 //实例化类 参数是一个Color类实例数组
 let gradient = new Gradient([
@@ -62,7 +62,7 @@ gradient.chromatogram = Color[]
 #### Point
 ~~~ javascript
 //导入类
-import { Point } from 'richUtils'
+import { Point } from 'easy_utils'
 
 //实例化类 参数为一个二维坐标 x, y
 let point = new Point(0, 0)
@@ -71,7 +71,7 @@ let point = new Point(0, 0)
 #### TimeMonitoring
 ~~~ javascript
 //导入类
-import { TimeMonitoring } from 'richUtils'
+import { TimeMonitoring } from 'easy_utils'
 
 //实例化类 参数依次为统计操作时间的元素，操作的事件列表, 自动暂停统计的延时, 计时开始的回调，计时运行的回调，计时结束的回调
 let timeMonitoring = new TimeMonitoring(el, listeners: string[], autoPauseTime, startFun, running, end)
@@ -103,7 +103,7 @@ timeMonitoring.destroy()
 |  lineEnd  | Point | true | 线段的结束点 |  -  |  -  |
 ~~~ javascript
 //导入方法
-import { Point, getTheDistanceOfAPointLineSegment } from 'richUtils'
+import { Point, getTheDistanceOfAPointLineSegment } from 'easy_utils'
 
 //返回值为number
 let distance: number = getTheDistanceOfAPointLineSegment(point：Point,  lineStart: Point, lineEnd: Point)
@@ -118,7 +118,7 @@ let distance: number = getTheDistanceOfAPointLineSegment(point：Point,  lineSta
 
 ~~~ javascript
 //导入方法
-import { Point, getTheDistanceFromPointToLine } from 'richUtils'
+import { Point, getTheDistanceFromPointToLine } from 'easy_utils'
 
 //返回值为 number
 let distance:number = getTheDistanceFromPointToLine(point：Point,  lineStart: Point, lineEnd: Point)
@@ -134,7 +134,7 @@ let distance:number = getTheDistanceFromPointToLine(point：Point,  lineStart: P
 
 ~~~ javascript
 //导入方法
-import { Point, determineIfAPointIsWithinAnotherPointArea } from 'richUtils'
+import { Point, determineIfAPointIsWithinAnotherPointArea } from 'easy_utils'
 
 //判返回值为 boolean
 let isArea:boolean = determineIfAPointIsWithinAnotherPointArea(point：Point,  areaPoint: Point, radius: number, type: string)
