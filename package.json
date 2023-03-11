@@ -4,7 +4,7 @@
   "description": "A wealth of practical tools",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "author": "wdxing",
+  "author": "dongxingwang",
   "license": "ISC",
   "scripts": {
     "test": "jest --config jestconfig.json",
