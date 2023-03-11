@@ -6,46 +6,10 @@
 import { debounce, sum } from 'lodash';
 import moment = require('moment');
 import { logger } from '../../utils/debug/debug';
+import {Time} from "./Time";
 
 const log = logger.extend('timeMonitoring');
-class Time {
-  // 开始时间
-  private _startTime: string;
-  // 结束时间
-  private _endTime: string;
-  // 总计时间 秒
-  private _total: number;
 
-  get total(): number {
-    return this._total;
-  }
-
-  set total(value: number) {
-    this._total = value;
-  }
-
-  get startTime(): string {
-    return this._startTime;
-  }
-
-  set startTime(value: string) {
-    this._startTime = value;
-  }
-
-  get endTime(): string {
-    return this._endTime;
-  }
-
-  set endTime(value: string) {
-    this._endTime = value;
-  }
-
-  constructor(startTime: string, endTime: string, total: number) {
-    this._startTime = startTime;
-    this._endTime = endTime;
-    this._total = total;
-  }
-}
 
 /**
  * 计时类统计页面操作时间
@@ -66,11 +30,11 @@ export class TimeMonitoring {
   // 总计时间
   private _totalTime: number = 0;
   // 计时开始回调
-  private _startFun: Function | undefined;
+  private _startFun: (() => void) | undefined;
   // 计时运行回调
-  private _running: Function | undefined;
+  private _running: ((isRunning: boolean, currentSeconds: number, total: number) => void) | undefined;
   // 计时结束回调
-  private _end: Function | undefined;
+  private _end: ((isRunning: boolean, total: number, timeLine: Time[]) => void) | undefined;
   // 计时时间线 包含一小次计时的开始时间和结束时间，总秒数
   private _timeLine: Time[] = [];
   // 自动暂停计时时间
@@ -149,9 +113,9 @@ export class TimeMonitoring {
     el: HTMLElement | Window | Document,
     listeners: string[],
     autoPauseTime = 6000,
-    startFun?: Function,
-    running?: Function,
-    end?: Function,
+    startFun?: ()=> void,
+    running?: (isRunning: boolean, currentSeconds: number, total: number) => void,
+    end?: (isRunning: boolean, total: number, timeLine: Time[]) => void,
   ) {
     this._el = el;
     this._listeners = listeners;
@@ -197,27 +161,28 @@ export class TimeMonitoring {
     this._totalTime = value;
   }
 
-  get startFun(): Function | undefined {
+
+  get startFun(): (() => void) | undefined {
     return this._startFun;
   }
 
-  set startFun(value: Function | undefined) {
+  set startFun(value: (() => void) | undefined) {
     this._startFun = value;
   }
 
-  get running(): Function | undefined {
+  get running(): ((isRunning: boolean, currentSeconds: number, total: number) => void) | undefined {
     return this._running;
   }
 
-  set running(value: Function | undefined) {
+  set running(value: ((isRunning: boolean, currentSeconds: number, total: number) => void) | undefined) {
     this._running = value;
   }
 
-  get end(): Function | undefined {
+  get end(): ((isRunning: boolean, total: number, timeLine: Time[]) => void) | undefined {
     return this._end;
   }
 
-  set end(value: Function | undefined) {
+  set end(value: ((isRunning: boolean, total: number, timeLine: Time[]) => void) | undefined) {
     this._end = value;
   }
 
@@ -231,7 +196,7 @@ export class TimeMonitoring {
 
   log(name: string): void {
     if (this.isDebugger) {
-      let currentTime = moment();
+      const currentTime = moment();
       log(
         name,
         this.isRunning,
@@ -255,9 +220,13 @@ export class TimeMonitoring {
     if (this.isManualPause) return;
     this.log('start');
     if (!this.isRunning) {
-      this.startFun && this.startFun();
+      if(this.startFun) {
+        this.startFun()
+      }
       this.startTime = moment();
-      this.running && this.calcTime();
+      if(this.running) {
+        this.calcTime()
+      }
       this.isRunning = true;
     }
     this.pause();
@@ -268,10 +237,10 @@ export class TimeMonitoring {
   }
 
   calcTime(): void {
-    let currentTime = moment();
-    let total: number = this.getTotal();
-    let currentSeconds = currentTime.diff(this.startTime, 'seconds');
-    (<Function>this.running)(this.isRunning, currentSeconds, total + currentSeconds);
+    const currentTime = moment();
+    const total: number = this.getTotal();
+    const currentSeconds = currentTime.diff(this.startTime, 'seconds');
+    (this.running as ((isRunning:boolean, currentSeconds: number, total: number)=> void))(this.isRunning, currentSeconds, total + currentSeconds);
     this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
     this.log('calcTime');
   }
@@ -280,7 +249,7 @@ export class TimeMonitoring {
     if (this.running) {
       clearTimeout(this.timeOut);
     }
-    let currentTime = moment();
+    const currentTime = moment();
     this.timeLine.push(
       new Time(
         this.startTime.format('YYYY MM DD HH:mm:ss'),
@@ -290,7 +259,7 @@ export class TimeMonitoring {
     );
     this.isRunning = false;
     if (this.end) {
-      let total: number = this.getTotal();
+      const total: number = this.getTotal();
       this.end(this.isRunning, total, this.timeLine);
     }
     this.log('stop');
@@ -305,12 +274,12 @@ export class TimeMonitoring {
       this.destroy();
     }
     if (this.isRunning) {
-      let currentTime = moment();
+      const currentTime = moment();
       total += currentTime.diff(this.startTime, 'seconds');
     }
     this.log('getTime');
     return {
-      total: total,
+      total,
       timeLine: this.timeLine,
     };
   }
@@ -329,9 +298,9 @@ export class TimeMonitoring {
   wait(): void {
     if (this.running) {
       clearTimeout(this.timeOut);
-      let currentTime = moment();
-      let total: number = this.getTotal();
-      let currentSeconds = this.isRunning ? currentTime.diff(this.startTime, 'seconds') : 0;
+      const currentTime = moment();
+      const total: number = this.getTotal();
+      const currentSeconds = this.isRunning ? currentTime.diff(this.startTime, 'seconds') : 0;
       this.running(this.isRunning, 0, total + currentSeconds);
     }
     if (this.isRunning) {
