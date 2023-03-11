@@ -1,6 +1,6 @@
 {
   "name": "easy-util-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A wealth of practical tools",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
