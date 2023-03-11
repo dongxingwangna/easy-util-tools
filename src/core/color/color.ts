@@ -4,6 +4,10 @@
  * @Date: 2022/9/24  14:42
  */
 
+import {logger} from "../../utils/debug/debug";
+
+const log = logger.extend("color");
+
 /**
  * 颜色
  * @param r {number} 0-255
@@ -61,9 +65,8 @@ export class Color {
    * @param v
    */
   num2hex(v: number): string {
-    let r;
-    r = v.toString(16);
-    r.length < 2 ? (r = '0' + r) : r;
+    let r:string = v.toString(16);
+    r = r.length < 2 ? (r = '0' + r) : r;
     return r;
   }
 
@@ -72,16 +75,16 @@ export class Color {
    * @param hex
    */
   hex2num(hex: string): number {
-    return parseInt(`0x${hex}`);
+    return parseInt(`0x${hex}`, undefined);
   }
 
   /**
    * 获取十六进制颜色值
    */
   getHexColor(): string {
-    let r = this.num2hex(this.r);
-    let g = this.num2hex(this.g);
-    let b = this.num2hex(this.b);
+    const r = this.num2hex(this.r);
+    const g = this.num2hex(this.g);
+    const b = this.num2hex(this.b);
     return `#${r}${g}${b}`;
   }
 
@@ -97,19 +100,19 @@ export class Color {
    * @param hexColor {string} #000000-#ffffff 0x000000-0xffffff
    */
   readHexColor(hexColor: string): Color {
-    let reg = new RegExp('^(#|0x)([A-z|0-9]{6})$');
+    const reg = new RegExp('^(#|0x)([A-z|0-9]{6})$');
     if (reg.test(hexColor)) {
       try {
-        let color = hexColor.replace(reg, `$2`);
+        const color = hexColor.replace(reg, `$2`);
         this.r = this.hex2num(`${color[0] + color[1]}`);
         this.g = this.hex2num(`${color[2] + color[3]}`);
         this.b = this.hex2num(`${color[4] + color[5]}`);
         return this;
       } catch (e) {
-        console.error('failedToParseValue', e);
+        log('failedToParseValue', e);
       }
     } else {
-      console.error('Failed to read color, please set correct hex color value');
+      log('Failed to read color, please set correct hex color value');
     }
     return this;
   }

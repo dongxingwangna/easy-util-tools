@@ -29,12 +29,12 @@ export class Gradient {
    * @param v {number} 0-1
    */
   getColor(v: number): Color {
-    let areaNum = this._chromatogram.length - 1;
-    let areaSize = 1 / areaNum;
+    const areaNum = this._chromatogram.length - 1;
+    const areaSize = 1 / areaNum;
     if (v >= 1) {
       return this._chromatogram[areaNum];
     }
-    let cIndex = Math.floor(v / (1 / areaNum));
+    const cIndex = Math.floor(v / (1 / areaNum));
     return this.calcColor(cIndex, (v - cIndex * areaSize) / areaSize);
   }
 
