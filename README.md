@@ -16,7 +16,7 @@ npm install --save easy-utils.js
 #### Color
 ~~~ javascript
 // 导入模块
-import { Color } from easy-utils.js
+import { Color } from 'easy-utils.js'
 
 //实例化类
 let color = new Color(r:number, g:number, b: number)
