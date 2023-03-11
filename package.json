@@ -1,5 +1,5 @@
 {
-  "name": "easy_utils",
+  "name": "easy-util-tools",
   "version": "1.0.0",
   "description": "A wealth of practical tools",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
   "files": [
     "lib/**/*"
   ],
-  "homepage": "https://github.com/dongxingwangna/easy_utils",
+  "homepage": "https://github.com/dongxingwangna/easy-util-tools",
   "keywords": [
     "graphic",
     "tool",
@@ -45,3 +45,4 @@
     "moment": "^2.29.4"
   }
 }
+
