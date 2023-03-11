@@ -4,9 +4,9 @@
  * @Date: 2022/9/24  14:42
  */
 
-import {logger} from "../../utils/debug/debug";
+import { logger } from '../../utils/debug/debug';
 
-const log = logger.extend("color");
+const log = logger.extend('color');
 
 /**
  * 颜色
@@ -65,7 +65,7 @@ export class Color {
    * @param v
    */
   num2hex(v: number): string {
-    let r:string = v.toString(16);
+    let r: string = v.toString(16);
     r = r.length < 2 ? (r = '0' + r) : r;
     return r;
   }

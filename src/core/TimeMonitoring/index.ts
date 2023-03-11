@@ -6,10 +6,9 @@
 import { debounce, sum } from 'lodash';
 import moment = require('moment');
 import { logger } from '../../utils/debug/debug';
-import {Time} from "./Time";
+import { Time } from './Time';
 
 const log = logger.extend('timeMonitoring');
-
 
 /**
  * 计时类统计页面操作时间
@@ -113,7 +112,7 @@ export class TimeMonitoring {
     el: HTMLElement | Window | Document,
     listeners: string[],
     autoPauseTime = 6000,
-    startFun?: ()=> void,
+    startFun?: () => void,
     running?: (isRunning: boolean, currentSeconds: number, total: number) => void,
     end?: (isRunning: boolean, total: number, timeLine: Time[]) => void,
   ) {
@@ -160,7 +159,6 @@ export class TimeMonitoring {
   set totalTime(value: number) {
     this._totalTime = value;
   }
-
 
   get startFun(): (() => void) | undefined {
     return this._startFun;
@@ -220,12 +218,12 @@ export class TimeMonitoring {
     if (this.isManualPause) return;
     this.log('start');
     if (!this.isRunning) {
-      if(this.startFun) {
-        this.startFun()
+      if (this.startFun) {
+        this.startFun();
       }
       this.startTime = moment();
-      if(this.running) {
-        this.calcTime()
+      if (this.running) {
+        this.calcTime();
       }
       this.isRunning = true;
     }
@@ -240,7 +238,11 @@ export class TimeMonitoring {
     const currentTime = moment();
     const total: number = this.getTotal();
     const currentSeconds = currentTime.diff(this.startTime, 'seconds');
-    (this.running as ((isRunning:boolean, currentSeconds: number, total: number)=> void))(this.isRunning, currentSeconds, total + currentSeconds);
+    (this.running as (isRunning: boolean, currentSeconds: number, total: number) => void)(
+      this.isRunning,
+      currentSeconds,
+      total + currentSeconds,
+    );
     this.timeOut = Number(setTimeout(this.calcTime.bind(this), 1000));
     this.log('calcTime');
   }

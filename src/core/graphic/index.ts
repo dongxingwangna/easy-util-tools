@@ -6,7 +6,7 @@
 
 import { Point } from './Point';
 import { PointInfo } from './PointInfo';
-import {logger} from "../../utils/debug/debug";
+import { logger } from '../../utils/debug/debug';
 
 const log = logger.extend('graphic');
 /**
@@ -52,7 +52,7 @@ export function determineIfAPointIsWithinAnotherPointArea(
   } else if (type === 'square') {
     return Math.abs(point.x - areaPoint.x) <= radius && Math.abs(point.y - areaPoint.y) <= radius;
   }
-  log(`type Error: in determineIfAPointIsWithinAnotherPointArea ${type}，optionalParameter round or square`)
+  log(`type Error: in determineIfAPointIsWithinAnotherPointArea ${type}，optionalParameter round or square`);
   return false;
 }
 
