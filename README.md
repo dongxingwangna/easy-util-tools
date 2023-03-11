@@ -1,4 +1,4 @@
-# graphictools
+# easy-utils
 
 ## 介绍
 图形工具
@@ -6,7 +6,7 @@
 
 ## 安装方法
 ~~~ bash
-npm install --save graphictools
+npm install --save easy-utils
 ~~~
 
 ## 使用说明
@@ -16,7 +16,7 @@ npm install --save graphictools
 #### Color
 ~~~ javascript
 // 导入模块
-import { Color } from graphictools
+import { Color } from easy-utils
 
 //实例化类
 let color = new Color(r:number, g:number, b: number)
@@ -45,7 +45,7 @@ color.readChannelColor(0, 0, 0)
 这个类可以自定义一个色谱，然后获取色谱上的某一点的颜色返回值是 实例化的Color 具体方法请参照上述Color类
 ~~~ javascript
 //导入模块
-import { Gradient } from graphictool
+import { Gradient } from 'easy-utils'
 
 //实例化类 参数是一个Color类实例数组
 let gradient = new Gradient([
@@ -63,7 +63,7 @@ gradient.chromatogram = Color[]
 #### Point
 ~~~ javascript
 //导入类
-import { Point } from 'graphictool'
+import { Point } from 'easy-utils'
 
 //实例化类 参数为一个二维坐标 x, y
 let point = new Point(0, 0)
@@ -72,7 +72,7 @@ let point = new Point(0, 0)
 #### TimeMonitoring
 ~~~ javascript
 //导入类
-import { TimeMonitoring } from 'graphictool'
+import { TimeMonitoring } from 'easy-utils'
 
 //实例化类 参数依次为统计操作时间的元素，操作的事件列表, 自动暂停统计的延时, 计时开始的回调，计时运行的回调，计时结束的回调
 let timeMonitoring = new TimeMonitoring(el, listeners: string[], autoPauseTime, startFun, running, end)
@@ -104,7 +104,7 @@ timeMonitoring.destroy()
 |  lineEnd  | Point | true | 线段的结束点 |  -  |  -  |
 ~~~ javascript
 //导入方法
-import { Point, getTheDistanceOfAPointLineSegment } from 'graphictool'
+import { Point, getTheDistanceOfAPointLineSegment } from 'easy-utils'
 
 //返回值为number
 let distance: number = getTheDistanceOfAPointLineSegment(point：Point,  lineStart: Point, lineEnd: Point)
@@ -119,7 +119,7 @@ let distance: number = getTheDistanceOfAPointLineSegment(point：Point,  lineSta
 
 ~~~ javascript
 //导入方法
-import { Point, getTheDistanceFromPointToLine } from 'graphictool'
+import { Point, getTheDistanceFromPointToLine } from 'easy-utils'
 
 //返回值为 number
 let distance:number = getTheDistanceFromPointToLine(point：Point,  lineStart: Point, lineEnd: Point)
@@ -135,7 +135,7 @@ let distance:number = getTheDistanceFromPointToLine(point：Point,  lineStart: P
 
 ~~~ javascript
 //导入方法
-import { Point, determineIfAPointIsWithinAnotherPointArea } from 'graphictool'
+import { Point, determineIfAPointIsWithinAnotherPointArea } from 'easy-utils'
 
 //判返回值为 boolean
 let isArea:boolean = determineIfAPointIsWithinAnotherPointArea(point：Point,  areaPoint: Point, radius: number, type: string)
@@ -149,7 +149,7 @@ let isArea:boolean = determineIfAPointIsWithinAnotherPointArea(point：Point,  a
 
 ~~~ javascript
 //导入方法
-import { Point, getTheDistanceBetweenTwoPoints } from 'graphictool'
+import { Point, getTheDistanceBetweenTwoPoints } from 'easy-utils'
 
 //返回值为 number
 let distance:number = getTheDistanceBetweenTwoPoints(point：Point,  point2: Point)
@@ -165,7 +165,7 @@ let distance:number = getTheDistanceBetweenTwoPoints(point：Point,  point2: Poi
 
 ~~~ javascript
 //导入方法
-import { Point, obtainTheAngleBetweenTwoPointsAndTheXAxis } from 'graphictool'
+import { Point, obtainTheAngleBetweenTwoPointsAndTheXAxis } from 'easy-utils'
 
 //返回值为 number
 let angle: number = obtainTheAngleBetweenTwoPointsAndTheXAxis(point：Point,  point2: Point, isDirection: boolean)
@@ -180,7 +180,7 @@ let angle: number = obtainTheAngleBetweenTwoPointsAndTheXAxis(point：Point,  po
 
 ~~~ javascript
 //导入方法
-import { Point, getTheClosestPoint } from 'graphictool'
+import { Point, getTheClosestPoint } from 'easy-utils'
 
 //返回值为 { index: number, point: Point }
 let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
@@ -197,7 +197,7 @@ let PointInfo = getTheClosestPoint(point：Point,  points: Point[])
 
 ~~~ javascript
 //导入方法
-import { Point, gettingPointsOnACircle } from 'graphictool'
+import { Point, gettingPointsOnACircle } from 'easy-utils'
 
 //返回值为 point:Point,
 let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number, startDirection: string, clockwiseOrNot: boolean)
@@ -213,7 +213,7 @@ let PointInfo = gettingPointsOnACircle(point：Point, angle: number , r: number,
 
 ~~~ javascript
 //导入方法
-import { Point, judgeWhetherThePointIsOnline } from 'graphictool'
+import { Point, judgeWhetherThePointIsOnline } from 'easy-utils'
 
 //返回值为 info{status: number, index: number, data: Point},
 let PointInfo = judgeWhetherThePointIsOnline(point：Point, points: Point[] , radius: number, type: string)

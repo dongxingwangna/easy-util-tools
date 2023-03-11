@@ -1,7 +1,7 @@
 {
-  "name": "graphictools",
-  "version": "1.6.9",
-  "description": "空间图形工具",
+  "name": "easy-utils",
+  "version": "1.0.0",
+  "description": "Simple and practical toolset",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "wdxing",
@@ -32,7 +32,7 @@
   "files": [
     "lib/**/*"
   ],
-  "homepage": "https://gitee.com/wwd0322/graphic-tools?_from=gitee_search",
+  "homepage": "https://github.com/dongxingwangna/easyUtils",
   "keywords": [
     "graphic",
     "tool",
