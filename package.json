@@ -32,7 +32,8 @@
   "files": [
     "lib/**/*"
   ],
-  "homepage": "https://github.com/dongxingwangna/easy-util-tools",
+  "repository": "https://github.com/dongxingwangna/easy-util-tools",
+  "homepage": "https://easy-util-tools.gitbook.io/easy-util-tools",
   "keywords": [
     "graphic",
     "tool",
