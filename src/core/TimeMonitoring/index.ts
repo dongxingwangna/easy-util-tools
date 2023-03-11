@@ -146,12 +146,12 @@ export class TimeMonitoring {
   }
 
   constructor(
-    el: HTMLElement|Window | Document,
+    el: HTMLElement | Window | Document,
     listeners: string[],
     autoPauseTime = 6000,
     startFun?: Function,
     running?: Function,
-    end?: Function
+    end?: Function,
   ) {
     this._el = el;
     this._listeners = listeners;
