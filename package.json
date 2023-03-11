@@ -1,6 +1,6 @@
 {
-  "name": "easy-utils.js",
-  "version": "1.0.1",
+  "name": "easyUtils.js",
+  "version": "1.0.0",
   "description": "Simple utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
