@@ -1,5 +1,5 @@
 {
-  "name": "easy-utils",
+  "name": "easy-utils.js",
   "version": "1.0.0",
   "description": "Simple and practical toolset",
   "main": "lib/index.js",
