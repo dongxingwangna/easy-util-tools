@@ -6,7 +6,9 @@
 
 import { Point } from './Point';
 import { PointInfo } from './PointInfo';
+import {logger} from "../../utils/debug/debug";
 
+const log = logger.extend('graphic');
 /**
  * 获取点到线段的距离
  * @param point {Point}
@@ -18,7 +20,7 @@ export function getTheDistanceOfAPointLineSegment(point: Point, lineStart: Point
     return Math.sqrt(
       (point.x - lineStart.x) * (point.x - lineStart.x) + (point.y - lineStart.y) * (point.y - lineStart.y),
     );
-  let r =
+  const r: number =
     ((point.x - lineStart.x) * (lienEnd.x - lineStart.x) + (point.y - lineStart.y) * (lienEnd.y - lineStart.y)) /
     ((lienEnd.x - lineStart.x) * (lienEnd.x - lineStart.x) + (lienEnd.y - lineStart.y) * (lienEnd.y - lineStart.y));
   if (r <= 0)
@@ -27,8 +29,8 @@ export function getTheDistanceOfAPointLineSegment(point: Point, lineStart: Point
     );
   if (r >= 1)
     return Math.sqrt((point.x - lienEnd.x) * (point.x - lienEnd.x) + (point.y - lienEnd.y) * (point.y - lienEnd.y));
-  let px = lineStart.x + (lienEnd.x - lineStart.x) * r;
-  let py = lineStart.y + (lienEnd.y - lineStart.y) * r;
+  const px = lineStart.x + (lienEnd.x - lineStart.x) * r;
+  const py = lineStart.y + (lienEnd.y - lineStart.y) * r;
   return Math.sqrt((point.x - px) * (point.x - px) + (point.y - py) * (point.y - py));
 }
 
@@ -50,7 +52,7 @@ export function determineIfAPointIsWithinAnotherPointArea(
   } else if (type === 'square') {
     return Math.abs(point.x - areaPoint.x) <= radius && Math.abs(point.y - areaPoint.y) <= radius;
   }
-  console.warn(`type Error: in determineIfAPointIsWithinAnotherPointArea ${type}，optionalParameter round or square`);
+  log(`type Error: in determineIfAPointIsWithinAnotherPointArea ${type}，optionalParameter round or square`)
   return false;
 }
 
@@ -62,7 +64,7 @@ export function determineIfAPointIsWithinAnotherPointArea(
  */
 export function getTheDistanceFromPointToLine(point: Point, lineStart: Point, lineEnd: Point): number {
   let len;
-  if (lineStart.x - lineEnd.x == 0) {
+  if (lineStart.x - lineEnd.x === 0) {
     len = Math.abs(point.x - lineStart.x);
   } else {
     const A = (lineStart.y - lineEnd.y) / (lineStart.x - lineEnd.x);
@@ -92,8 +94,8 @@ export function obtainTheAngleBetweenTwoPointsAndTheXAxis(
   point2: Point,
   isDirection: boolean = false,
 ): number {
-  let dy = point2.y - point.y;
-  let dis = getTheDistanceBetweenTwoPoints(point, point2);
+  const dy = point2.y - point.y;
+  const dis = getTheDistanceBetweenTwoPoints(point, point2);
   let rote = dis > 0 ? Math.round((Math.asin(dy / dis) / Math.PI) * 180) : 0;
   if (point2.x < point.x && isDirection) {
     rote = 180 - rote;
@@ -108,8 +110,8 @@ export function obtainTheAngleBetweenTwoPointsAndTheXAxis(
  */
 export function getTheClosestPoint(point: Point, points: Point[]): PointInfo {
   let index: number = 0;
-  let data: Point = new Point(points[0].x, points[0].y);
-  let dif: number = getTheDistanceBetweenTwoPoints(point, points[0]);
+  const data: Point = new Point(points[0].x, points[0].y);
+  const dif: number = getTheDistanceBetweenTwoPoints(point, points[0]);
   for (let i = 0; i < points.length; i++) {
     if (getTheDistanceBetweenTwoPoints(point, points[i]) < dif) {
       index = i;
@@ -135,7 +137,7 @@ export function gettingPointsOnACircle(
   point: Point,
   angle: number,
   r: number,
-  startDirection: String = 'right',
+  startDirection: string = 'right',
   clockwiseOrNot: boolean = false,
 ) {
   switch (startDirection) {
@@ -171,7 +173,7 @@ export function judgeWhetherThePointIsOnline(
   radius?: number,
   type?: string,
 ): { index: number; data: Point } {
-  let res: {
+  const res: {
     index: number;
     data: Point;
   } = {
