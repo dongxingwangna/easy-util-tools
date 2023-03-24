@@ -4,32 +4,18 @@
  * @Date: 2022/9/24  14:42
  */
 
-import { Color, Gradient } from './core/color';
-
-import {
-  getTheDistanceOfAPointLineSegment,
-  determineIfAPointIsWithinAnotherPointArea,
-  getTheDistanceFromPointToLine,
-  obtainTheAngleBetweenTwoPointsAndTheXAxis,
-  getTheDistanceBetweenTwoPoints,
-  getTheClosestPoint,
-  gettingPointsOnACircle,
-  judgeWhetherThePointIsOnline,
-} from './core/graphic';
-import { Point } from './core/graphic/Point';
-import { TimeMonitoring } from './core/TimeMonitoring';
+import { Point } from "./modules/Point";
+import { TimeMonitoring } from "./modules/TimeMonitoring/TimeMonitoring";
+import { Line } from "./modules/Line";
+import { Circle } from "./modules/Circle";
+import { Color } from "./modules/color";
+import { Gradient } from "./modules/Gradient";
 
 export {
   Color,
   Gradient,
   Point,
-  getTheDistanceOfAPointLineSegment,
-  getTheDistanceFromPointToLine,
-  determineIfAPointIsWithinAnotherPointArea,
-  TimeMonitoring,
-  getTheDistanceBetweenTwoPoints,
-  obtainTheAngleBetweenTwoPointsAndTheXAxis,
-  getTheClosestPoint,
-  gettingPointsOnACircle,
-  judgeWhetherThePointIsOnline,
+  Line,
+  Circle,
+  TimeMonitoring
 };

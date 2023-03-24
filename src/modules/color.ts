@@ -4,8 +4,8 @@
  * @Date: 2022/9/24  14:42
  */
 
-import { logger } from '../../utils/debug/debug';
-import { hex2num, num2hex } from '../../utils/numberUtil';
+import { logger } from '../utils/debug/debug';
+import { hex2num, num2hex } from '../utils/numberUtil';
 
 const log = logger.extend('color');
 
