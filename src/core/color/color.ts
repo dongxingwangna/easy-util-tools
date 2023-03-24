@@ -5,6 +5,7 @@
  */
 
 import { logger } from '../../utils/debug/debug';
+import {hex2num, num2hex} from "../../utils/numberUtil";
 
 const log = logger.extend('color');
 
@@ -43,6 +44,39 @@ export class Color {
     this._b = value;
   }
 
+
+  /**
+   * 通道颜色，这个属性新增于1.0.3版本，这个属性只读
+   * Channel color, this property was added in version 1.0.3, this property is read-only
+   */
+  get channel():{r:number, g:number, b:number} {
+    return {
+      r: this.r / 255,
+      g: this.g / 255,
+      b: this.b / 255,
+    };
+  }
+
+  /**
+   * 十六进制颜色值，这个属性新增于1.0.3版本，这个属性只读
+   * Hexadecimal color value, this property was added in version 1.0.3, this property is read-only
+   */
+  get hex():string {
+    const r = num2hex(this.r);
+    const g = num2hex(this.g);
+    const b = num2hex(this.b);
+    return `#${r}${g}${b}`;
+  }
+
+  /**
+   * rgb颜色，这个属性新增于1.0.3版本，这个属性只读
+   * rgb color, this attribute has been added in version 1.0.3, this property is read-only
+   */
+  get rgb():string {
+    return `rgb(${this.r} ${this.g} ${this.b})`;
+  }
+
+
   constructor(r: number = 0, g: number = 0, b: number = 0) {
     this._r = r;
     this._g = g;
@@ -50,7 +84,8 @@ export class Color {
   }
 
   /**
-   * 获取通道颜色
+   * 获取通道颜色 此方法将在下一个minor版本废弃，可以直接使用channel属性获取
+   * Get channel color This method will be deprecated in the next minor version and can be obtained directly using the channel property
    */
   getChannelColor(): { r: number; g: number; b: number } {
     return {
@@ -60,36 +95,21 @@ export class Color {
     };
   }
 
-  /**
-   * 数值转十六进制
-   * @param v
-   */
-  num2hex(v: number): string {
-    let r: string = v.toString(16);
-    r = r.length < 2 ? (r = '0' + r) : r;
-    return r;
-  }
 
   /**
-   * 十六进制转十进制
-   * @param hex
-   */
-  hex2num(hex: string): number {
-    return parseInt(`0x${hex}`, undefined);
-  }
-
-  /**
-   * 获取十六进制颜色值
+   * 获取十六进制颜色值 此方法将在下一个minor版本废弃，可以直接使用hex属性获取
+   * Get hexadecimal color value This method will be deprecated in the next minor version and can be obtained directly using the hex property
    */
   getHexColor(): string {
-    const r = this.num2hex(this.r);
-    const g = this.num2hex(this.g);
-    const b = this.num2hex(this.b);
+    const r = num2hex(this.r);
+    const g = num2hex(this.g);
+    const b = num2hex(this.b);
     return `#${r}${g}${b}`;
   }
 
   /**
-   * 获取rgb颜色
+   * 获取rgb颜色 此方法将在下一个minor 版本废弃，可以直接使用rgb属性获取
+   * Get RGB color This method will be deprecated in the next minor version and can be obtained directly using the rgb property
    */
   getRgbColor(): string {
     return `rgb(${this.r} ${this.g} ${this.b})`;
@@ -104,9 +124,9 @@ export class Color {
     if (reg.test(hexColor)) {
       try {
         const color = hexColor.replace(reg, `$2`);
-        this.r = this.hex2num(`${color[0] + color[1]}`);
-        this.g = this.hex2num(`${color[2] + color[3]}`);
-        this.b = this.hex2num(`${color[4] + color[5]}`);
+        this.r = hex2num(`${color[0] + color[1]}`);
+        this.g = hex2num(`${color[2] + color[3]}`);
+        this.b = hex2num(`${color[4] + color[5]}`);
         return this;
       } catch (e) {
         log('failedToParseValue', e);

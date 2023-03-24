@@ -12,6 +12,10 @@ test('Color getChannelColor', () => {
   expect(new Color(0, 0, 0).getChannelColor()).toEqual({ r: 0, g: 0, b: 0 });
 });
 
+test('Color.channel', () => {
+  expect(new Color(0, 0, 0).channel).toEqual({ r: 0, g: 0, b: 0 });
+});
+
 test('Color readRgbColor', () => {
   expect(new Color().readRgbColor(255, 255, 255).getChannelColor()).toEqual({ r: 1, g: 1, b: 1 });
 });
