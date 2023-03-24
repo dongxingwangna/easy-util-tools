@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
     "declaration": true,
-    "target": "es5",
+    "target": "es6",
     "listFiles": false,
     "listEmittedFiles": true,
     "noUnusedLocals": true,
