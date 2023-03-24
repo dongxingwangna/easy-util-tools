@@ -1,5 +1,5 @@
-import {getTheDistanceBetweenTwoPoints} from "./index";
-import {PointInfo} from "./PointInfo";
+import { getTheDistanceBetweenTwoPoints } from './index';
+import { PointInfo } from './PointInfo';
 
 /**
  * @docName: Point.ts
@@ -45,7 +45,7 @@ export class Point {
    * Gets the distance to the point
    * @param point
    */
-  getDistanceToPoint(point:Point):number {
+  getDistanceToPoint(point: Point): number {
     return Math.sqrt(Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2));
   }
 
@@ -54,7 +54,7 @@ export class Point {
    * Gets the closest point
    * @param points
    */
-  getClosestPoint(points:Point[]):PointInfo{
+  getClosestPoint(points: Point[]): PointInfo {
     let index: number = 0;
     const data: Point = new Point(points[0].x, points[0].y);
     const dif: number = getTheDistanceBetweenTwoPoints(this, points[0]);
@@ -70,5 +70,4 @@ export class Point {
       data,
     };
   }
-
 }

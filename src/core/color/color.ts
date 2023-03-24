@@ -5,7 +5,7 @@
  */
 
 import { logger } from '../../utils/debug/debug';
-import {hex2num, num2hex} from "../../utils/numberUtil";
+import { hex2num, num2hex } from '../../utils/numberUtil';
 
 const log = logger.extend('color');
 
@@ -44,12 +44,11 @@ export class Color {
     this._b = value;
   }
 
-
   /**
    * 通道颜色，这个属性新增于1.0.3版本，这个属性只读
    * Channel color, this property was added in version 1.0.3, this property is read-only
    */
-  get channel():{r:number, g:number, b:number} {
+  get channel(): { r: number; g: number; b: number } {
     return {
       r: this.r / 255,
       g: this.g / 255,
@@ -61,7 +60,7 @@ export class Color {
    * 十六进制颜色值，这个属性新增于1.0.3版本，这个属性只读
    * Hexadecimal color value, this property was added in version 1.0.3, this property is read-only
    */
-  get hex():string {
+  get hex(): string {
     const r = num2hex(this.r);
     const g = num2hex(this.g);
     const b = num2hex(this.b);
@@ -72,10 +71,9 @@ export class Color {
    * rgb颜色，这个属性新增于1.0.3版本，这个属性只读
    * rgb color, this attribute has been added in version 1.0.3, this property is read-only
    */
-  get rgb():string {
+  get rgb(): string {
     return `rgb(${this.r} ${this.g} ${this.b})`;
   }
-
 
   constructor(r: number = 0, g: number = 0, b: number = 0) {
     this._r = r;
@@ -94,7 +92,6 @@ export class Color {
       b: this.b / 255,
     };
   }
-
 
   /**
    * 获取十六进制颜色值 此方法将在下一个minor版本废弃，可以直接使用hex属性获取
