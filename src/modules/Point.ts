@@ -1,14 +1,12 @@
+import { Line } from './Line';
+import { logger } from '../utils/debug/debug';
 
-import { Line } from "./Line";
-import { logger } from "../utils/debug/debug";
-
-const log = logger.extend('Point')
+const log = logger.extend('Point');
 
 interface PointInfo {
   index: number;
   data: Point;
 }
-
 
 /**
  * @docName: Point.ts
@@ -65,7 +63,7 @@ export class Point {
    * @param radius
    * @param type
    */
-  isPointInArea(point:Point, radius:number = 5, type:'round'|'square' = 'round'):boolean {
+  isPointInArea(point: Point, radius: number = 5, type: 'round' | 'square' = 'round'): boolean {
     if (type === 'round') {
       return Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2) <= Math.pow(radius, 2);
     } else if (type === 'square') {
@@ -80,35 +78,37 @@ export class Point {
    * Gets the distance to the line
    * @param line
    */
-  getDistanceToLine(line:Line):number {
-   if(line.limited) {
-     if (line.start.x === line.end.x && line.start.y === line.end.y)
-       return Math.sqrt(
-         (this.x - line.start.x) * (this.x - line.start.x) + (this.y - line.start.y) * (this.y - line.start.y),
-       );
-     const r: number =
-       ((this.x - line.start.x) * (line.end.x - line.start.x) + (this.y - line.start.y) * (line.end.y - line.start.y)) /
-       ((line.end.x - line.start.x) * (line.end.x - line.start.x) + (line.end.y - line.start.y) * (line.end.y - line.start.y));
-     if (r <= 0)
-       return Math.sqrt(
-         (this.x - line.start.x) * (this.x - line.start.x) + (this.y - line.start.y) * (this.y - line.start.y),
-       );
-     if (r >= 1)
-       return Math.sqrt((this.x - line.end.x) * (this.x - line.end.x) + (this.y - line.end.y) * (this.y - line.end.y));
-     const px = line.start.x + (line.end.x - line.start.x) * r;
-     const py = line.start.y + (line.end.y - line.start.y) * r;
-     return Math.sqrt((this.x - px) * (this.x - px) + (this.y - py) * (this.y - py));
-   } else {
-     let len;
-     if (line.start.x - line.end.x === 0) {
-       len = Math.abs(this.x - line.start.x);
-     } else {
-       const A = (line.start.y - line.end.y) / (line.start.x - line.end.x);
-       const B = line.start.y - A * line.start.x;
-       len = Math.abs((A * this.x + B - this.y) / Math.sqrt(A * A + 1));
-     }
-     return len;
-   }
+  getDistanceToLine(line: Line): number {
+    if (line.limited) {
+      if (line.start.x === line.end.x && line.start.y === line.end.y)
+        return Math.sqrt(
+          (this.x - line.start.x) * (this.x - line.start.x) + (this.y - line.start.y) * (this.y - line.start.y),
+        );
+      const r: number =
+        ((this.x - line.start.x) * (line.end.x - line.start.x) +
+          (this.y - line.start.y) * (line.end.y - line.start.y)) /
+        ((line.end.x - line.start.x) * (line.end.x - line.start.x) +
+          (line.end.y - line.start.y) * (line.end.y - line.start.y));
+      if (r <= 0)
+        return Math.sqrt(
+          (this.x - line.start.x) * (this.x - line.start.x) + (this.y - line.start.y) * (this.y - line.start.y),
+        );
+      if (r >= 1)
+        return Math.sqrt((this.x - line.end.x) * (this.x - line.end.x) + (this.y - line.end.y) * (this.y - line.end.y));
+      const px = line.start.x + (line.end.x - line.start.x) * r;
+      const py = line.start.y + (line.end.y - line.start.y) * r;
+      return Math.sqrt((this.x - px) * (this.x - px) + (this.y - py) * (this.y - py));
+    } else {
+      let len;
+      if (line.start.x - line.end.x === 0) {
+        len = Math.abs(this.x - line.start.x);
+      } else {
+        const A = (line.start.y - line.end.y) / (line.start.x - line.end.x);
+        const B = line.start.y - A * line.start.x;
+        len = Math.abs((A * this.x + B - this.y) / Math.sqrt(A * A + 1));
+      }
+      return len;
+    }
   }
 
   /**
@@ -119,7 +119,7 @@ export class Point {
   getClosestPoint(points: Point[]): PointInfo {
     let index: number = 0;
     const data: Point = new Point(points[0].x, points[0].y);
-    const dif: number = this.getDistanceToPoint(points[0])
+    const dif: number = this.getDistanceToPoint(points[0]);
     for (let i = 0; i < points.length; i++) {
       if (this.getDistanceToPoint(points[i]) < dif) {
         index = i;

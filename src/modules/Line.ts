@@ -3,15 +3,14 @@
  * @Author: wdx
  * @Date: 2023/3/24  23:48
  */
-import { Point } from "./Point";
+import { Point } from './Point';
 
 export class Line {
+  private _start: Point = new Point(0, 0);
 
-  private _start:Point = new Point(0,0);
+  private _end: Point = new Point(0, 0);
 
-  private _end:Point = new Point(0,0);
-
-  private _limited:boolean = true;
+  private _limited: boolean = true;
 
   get start(): Point {
     return this._start;
@@ -48,7 +47,7 @@ export class Line {
    * Gets the angle to the x-axis
    * @param isDirection
    */
-  getXAxisAngle(isDirection: boolean = false,):number {
+  getXAxisAngle(isDirection: boolean = false): number {
     const dy = this.end.y - this.start.y;
     const dis = this.start.getDistanceToPoint(this.end);
     let rote = dis > 0 ? Math.round((Math.asin(dy / dis) / Math.PI) * 180) : 0;
@@ -57,7 +56,4 @@ export class Line {
     }
     return rote;
   }
-
-
-
 }

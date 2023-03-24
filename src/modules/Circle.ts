@@ -3,12 +3,11 @@
  * @Author: wdx
  * @Date: 2023/3/25  01:28
  */
-import { Point } from "./Point";
+import { Point } from './Point';
 
 export class Circle {
   private _center: Point;
-  private _radius:number;
-
+  private _radius: number;
 
   get center(): Point {
     return this._center;
@@ -26,18 +25,12 @@ export class Circle {
     this._radius = value;
   }
 
-
   constructor(center: Point, radius: number) {
     this._center = center;
     this._radius = radius;
   }
 
-
-  getPointOnCircle(
-     angle: number,
-     startDirection: string = 'right',
-     clockwiseOrNot: boolean = false,
-  ):Point {
+  getPointOnCircle(angle: number, startDirection: string = 'right', clockwiseOrNot: boolean = false): Point {
     switch (startDirection) {
       case 'top':
         angle += 90;
@@ -55,7 +48,9 @@ export class Circle {
     if (clockwiseOrNot) {
       radian = radian * -1;
     }
-    return new Point(this.center.x + Number((Math.cos(radian) * this.radius).toFixed(2)), this.center.y + Number((Math.sin(radian) * this.radius).toFixed(2)));
+    return new Point(
+      this.center.x + Number((Math.cos(radian) * this.radius).toFixed(2)),
+      this.center.y + Number((Math.sin(radian) * this.radius).toFixed(2)),
+    );
   }
-
 }
