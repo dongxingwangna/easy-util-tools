@@ -29,7 +29,11 @@ export class Circle {
     this._radius = radius;
   }
 
-  getPointOnCircle(angle: number, startDirection: 'top'|'right'|'bottom'|'left' = 'right', clockwiseOrNot: boolean = false): Point {
+  getPointOnCircle(
+    angle: number,
+    startDirection: 'top' | 'right' | 'bottom' | 'left' = 'right',
+    clockwiseOrNot: boolean = false,
+  ): Point {
     switch (startDirection) {
       case 'top':
         angle += 90;
@@ -47,8 +51,8 @@ export class Circle {
     let directionX = Math.cos(radian);
     let directionY = Math.sin(radian);
     if (clockwiseOrNot) {
-      directionX *= -1
-      directionY *= -1
+      directionX *= -1;
+      directionY *= -1;
     }
     return new Point(
       this.center.x + Number((directionX * this.radius).toFixed(2)),
