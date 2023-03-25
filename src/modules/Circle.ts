@@ -4,7 +4,6 @@
  * @Date: 2023/3/25  01:28
  */
 import { Point } from './Point';
-
 export class Circle {
   private _center: Point;
   private _radius: number;
@@ -30,7 +29,7 @@ export class Circle {
     this._radius = radius;
   }
 
-  getPointOnCircle(angle: number, startDirection: string = 'right', clockwiseOrNot: boolean = false): Point {
+  getPointOnCircle(angle: number, startDirection: 'top'|'right'|'bottom'|'left' = 'right', clockwiseOrNot: boolean = false): Point {
     switch (startDirection) {
       case 'top':
         angle += 90;
@@ -44,13 +43,16 @@ export class Circle {
       default:
         angle += 0;
     }
-    let radian = ((2 * Math.PI) / 360) * angle;
+    const radian = ((2 * Math.PI) / 360) * angle;
+    let directionX = Math.cos(radian);
+    let directionY = Math.sin(radian);
     if (clockwiseOrNot) {
-      radian = radian * -1;
+      directionX *= -1
+      directionY *= -1
     }
     return new Point(
-      this.center.x + Number((Math.cos(radian) * this.radius).toFixed(2)),
-      this.center.y + Number((Math.sin(radian) * this.radius).toFixed(2)),
+      this.center.x + Number((directionX * this.radius).toFixed(2)),
+      this.center.y + Number((directionY * this.radius).toFixed(2)),
     );
   }
 }
