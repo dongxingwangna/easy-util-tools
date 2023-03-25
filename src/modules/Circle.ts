@@ -29,6 +29,13 @@ export class Circle {
     this._radius = radius;
   }
 
+  /**
+   * 获取圆上的点
+   * Gets the point on the circle
+   * @param angle 点所在的角度 The angle at which the point is located
+   * @param startDirection 起始方向 Start direction
+   * @param clockwiseOrNot 是否为顺时针 Whether it is clockwise
+   */
   getPointOnCircle(
     angle: number,
     startDirection: 'top' | 'right' | 'bottom' | 'left' = 'right',

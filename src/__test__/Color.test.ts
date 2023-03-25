@@ -1,11 +1,23 @@
 import { Color } from '../index';
 
+test('Color.hex', () => {
+  expect(new Color(0, 0, 0).hex).toBe('#000000');
+});
+
 test('Color getHexColor', () => {
   expect(new Color(0, 0, 0).getHexColor()).toBe('#000000');
 });
 
+test('Color.rgb', () => {
+  expect(new Color(0, 0, 0).rgb).toBe('rgb(0 0 0)');
+});
+
 test('Color getRgbColor', () => {
   expect(new Color(0, 0, 0).getRgbColor()).toBe('rgb(0 0 0)');
+});
+
+test('Color.channel', () => {
+  expect(new Color(0, 0, 0).channel).toEqual({ r: 0, g: 0, b: 0 });
 });
 
 test('Color getChannelColor', () => {
