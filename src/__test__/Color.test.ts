@@ -39,3 +39,4 @@ test('Color readHexColor', () => {
 test('Color readChannelColor', () => {
   expect(new Color().readChannelColor(1, 1, 1).getHexColor()).toBe('#ffffff');
 });
+

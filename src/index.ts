@@ -10,5 +10,6 @@ import { Line } from './modules/Line';
 import { Circle } from './modules/Circle';
 import { Color } from './modules/color';
 import { Gradient } from './modules/Gradient';
+import { Rectangle } from './modules/Rectangle';
 
-export { Color, Gradient, Point, Line, Circle, TimeMonitoring };
+export { Color, Gradient, Point, Line, Circle, Rectangle,TimeMonitoring };
