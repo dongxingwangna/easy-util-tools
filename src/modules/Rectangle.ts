@@ -64,7 +64,7 @@ import { GetCross } from "../utils/mathUtil";
    * @param point
    * @constructor
    */
-  IsPointInMatrix(point: Point): boolean {
+  isPointInMatrix(point: Point): boolean {
     const p1 = new Point(this.maxX, this.maxY);
     const p2 = new Point(this.minX, this.maxY);
     const p3 = new Point(this.minX, this.minY);
