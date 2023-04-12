@@ -62,7 +62,6 @@ import { GetCross } from "../utils/mathUtil";
    *  判断点是否在矩形内
    * Determines whether the point is inside a rectangle
    * @param point
-   * @constructor
    */
   isPointInMatrix(point: Point): boolean {
     const p1 = new Point(this.maxX, this.maxY);
