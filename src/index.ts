@@ -12,4 +12,4 @@ import { Color } from './modules/color';
 import { Gradient } from './modules/Gradient';
 import { Rectangle } from './modules/Rectangle';
 
-export { Color, Gradient, Point, Line, Circle, Rectangle,TimeMonitoring };
+export { Color, Gradient, Point, Line, Circle, Rectangle, TimeMonitoring };
