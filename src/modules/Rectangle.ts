@@ -73,8 +73,7 @@ export class Rectangle {
     const p3 = new Point(this.minX, this.minY);
     const p4 = new Point(this.maxX, this.minY);
     return (
-      GetCross(p1, p2, point) * GetCross(p3, p4, point) >= 0 &&
-      GetCross(p2, p3, point) * GetCross(p4, p1, point) >= 0
+      GetCross(p1, p2, point) * GetCross(p3, p4, point) >= 0 && GetCross(p2, p3, point) * GetCross(p4, p1, point) >= 0
     );
   }
 }
