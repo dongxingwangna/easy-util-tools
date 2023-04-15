@@ -1,4 +1,4 @@
-import {formatAmount} from "./package/money";
+import {formatAmount} from "./packages/money";
 
 export const utils = {
   formatAmount,
