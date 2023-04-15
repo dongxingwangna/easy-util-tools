@@ -1,5 +1,6 @@
-import { Point } from './Point';
-import { GetCross } from '../utils/mathUtil';
+import {Point} from './Point';
+import {GetCross} from '../utils/mathUtil';
+import {max, min} from "lodash";
 
 /**
  * @docName: Rectangle.ts
@@ -52,10 +53,13 @@ export class Rectangle {
    * @param height
    */
   constructor(point: Point, width: number, height: number) {
-    this.minX = width <= 0 ? point.x - width : point.x + width;
-    this.maxX = width >= 0 ? point.x - width : point.x + width;
-    this.minY = height <= 0 ? point.y - height : point.y + height;
-    this.maxY = height >= 0 ? point.y - height : point.y + height;
+    const point1 = new Point(point.x + width, point.y + height);
+    const xC = [point.x, point1.x];
+    const yC = [point.y, point1.y];
+    this.minX = min(xC) as number;
+    this.maxX = max(xC) as number;
+    this.minY = min(yC) as number;
+    this.maxY = max(yC) as number;
   }
 
   /**
