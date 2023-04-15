@@ -82,37 +82,6 @@ export class Color {
   }
 
   /**
-   * 获取通道颜色 此方法将在下一个minor版本废弃，可以直接使用channel属性获取
-   * Get channel color This method will be deprecated in the next minor version and can be obtained directly using the channel property
-   */
-  getChannelColor(): { r: number; g: number; b: number } {
-    return {
-      r: this.r / 255,
-      g: this.g / 255,
-      b: this.b / 255,
-    };
-  }
-
-  /**
-   * 获取十六进制颜色值 此方法将在下一个minor版本废弃，可以直接使用hex属性获取
-   * Get hexadecimal color value This method will be deprecated in the next minor version and can be obtained directly using the hex property
-   */
-  getHexColor(): string {
-    const r = num2hex(this.r);
-    const g = num2hex(this.g);
-    const b = num2hex(this.b);
-    return `#${r}${g}${b}`;
-  }
-
-  /**
-   * 获取rgb颜色 此方法将在下一个minor 版本废弃，可以直接使用rgb属性获取
-   * Get RGB color This method will be deprecated in the next minor version and can be obtained directly using the rgb property
-   */
-  getRgbColor(): string {
-    return `rgb(${this.r} ${this.g} ${this.b})`;
-  }
-
-  /**
    * 读取十六进制颜色
    * @param hexColor {string} #000000-#ffffff 0x000000-0xffffff
    */
