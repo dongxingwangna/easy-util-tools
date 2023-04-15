@@ -1,6 +1,6 @@
-import {Point} from './Point';
-import {GetCross} from '../utils/mathUtil';
-import {max, min} from "lodash";
+import { Point } from './Point';
+import { GetCross } from '../utils/mathUtil';
+import { max, min } from 'lodash';
 
 /**
  * @docName: Rectangle.ts
